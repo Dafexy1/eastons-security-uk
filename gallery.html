@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Easton's Training</title>
+
+  <!-- Same fonts as index.html -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ================================================
+       DESIGN TOKENS — identical to index.html
+    ================================================= */
+    :root {
+      --dark:        #1a1a1a;
+      --dark-mid:    #242424;
+      --dark-light:  #2e2e2e;
+      --red:         #c0392b;
+      --red-dark:    #a93226;
+      --light-bg:    #f4f4f4;
+      --white:       #ffffff;
+      --text-dark:   #1a1a1a;
+      --text-mid:    #555555;
+      --text-light:  #f0ece4;
+      --text-muted:  #999999;
+      --border-light:#e0e0e0;
+      --font-display:'Oswald', sans-serif;
+      --font-body:   'Lato', sans-serif;
+      --nav-h:       80px;
+      --max-w:       1180px;
+      --tr:          0.3s ease;
+    }
+
+    /* ================================================
+       RESET
+    ================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background: var(--light-bg);
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; transition: color var(--tr); }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ================================================
+       TOP BAR — same as index.html
+    ================================================= */
+    #topbar {
+      background: var(--dark);
+      border-bottom: 1px solid var(--dark-light);
+      padding: 8px 0;
+    }
+    .topbar-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .topbar-contact {
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+    .topbar-contact a { color: var(--text-muted); display: flex; align-items: center; gap: 7px; }
+    .topbar-contact a:hover { color: var(--red); }
+    .topbar-contact i { color: var(--red); font-size: 12px; }
+    .topbar-social { display: flex; gap: 8px; }
+    .topbar-social a {
+      width: 28px; height: 28px;
+      border: 1px solid var(--dark-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: var(--text-muted);
+      transition: background var(--tr), color var(--tr), border-color var(--tr);
+    }
+    .topbar-social a:hover { background: var(--red); border-color: var(--red); color: var(--white); }
+
+    /* ================================================
+       NAVBAR — identical to index.html
+    ================================================= */
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--dark);
+      border-bottom: 3px solid var(--red);
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+    }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo .logo-main {
+      font-family: var(--font-display);
+      font-size: 24px; font-weight: 700;
+      color: var(--white); letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .nav-logo .logo-sub {
+      font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); margin-top: 3px;
+    }
+    .nav-links { display: flex; align-items: center; }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a {
+      display: block; padding: 0 16px;
+      height: var(--nav-h); line-height: var(--nav-h);
+      font-family: var(--font-display); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #ccc;
+      transition: color var(--tr), background var(--tr); position: relative;
+    }
+    .nav-links > li > a:hover,
+    .nav-links > li > a.active { color: var(--white); background: rgba(255,255,255,0.05); }
+    /* Active underline indicator */
+    .nav-links > li > a.active::after,
+    .nav-links > li > a:hover::after {
+      content: ''; display: block; height: 3px; background: var(--red);
+      position: absolute; bottom: -3px; left: 0; right: 0;
+    }
+    /* Dropdown */
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: var(--dark-mid); border-top: 3px solid var(--red);
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: opacity 0.25s, transform 0.25s, visibility 0.25s; z-index: 100;
+    }
+    .nav-links > li:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a {
+      display: block; padding: 10px 20px; font-size: 13px;
+      color: #aaa; border-bottom: 1px solid var(--dark-light);
+      transition: color var(--tr), padding-left var(--tr), background var(--tr);
+    }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a:hover { color: var(--white); background: rgba(192,57,43,0.15); padding-left: 28px; }
+
+    /* Mobile hamburger */
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .nav-toggle span { display: block; width: 26px; height: 2px; background: var(--white); transition: var(--tr); }
+    #mobile-nav {
+      display: none; position: fixed; inset: 0;
+      background: rgba(20,20,20,0.98); z-index: 999;
+      padding: 100px 32px 40px; flex-direction: column; gap: 4px; overflow-y: auto;
+    }
+    #mobile-nav.open { display: flex; }
+    .mob-link {
+      font-family: var(--font-display); font-size: 26px; font-weight: 600;
+      color: var(--white); padding: 14px 0; border-bottom: 1px solid var(--dark-light);
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .mob-link:hover { color: var(--red); }
+
+    /* ================================================
+       PAGE HERO BANNER — dark strip (not full height)
+       Same feel as index hero but compact
+    ================================================= */
+    #page-hero {
+      background:
+        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+        /* swap url() here with your banner image — same as index.html instructions */
+        /* url('images/gallery-banner.jpg') center center / cover no-repeat, */
+        repeating-linear-gradient(-45deg, transparent 0, transparent 30px, rgba(192,57,43,0.05) 30px, rgba(192,57,43,0.05) 31px),
+        linear-gradient(135deg, #0d0d0d 0%, #1a0a08 50%, #1a1a1a 100%);
+      padding: 80px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Diagonal red accent — same as hero on index */
+    #page-hero::before {
+      content: '';
+      position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
+      background: linear-gradient(135deg, transparent 30%, rgba(192,57,43,0.07) 100%);
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    /* Vertical red line detail */
+    #page-hero::after {
+      content: '';
+      position: absolute; left: 120px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, transparent, rgba(192,57,43,0.25), transparent);
+    }
+    .page-hero-content {
+      position: relative; z-index: 2;
+      max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+    }
+    .page-hero-tag {
+      display: inline-block; background: var(--red); color: var(--white);
+      font-family: var(--font-display); font-size: 11px; letter-spacing: 0.3em;
+      text-transform: uppercase; padding: 5px 14px; margin-bottom: 20px;
+    }
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700; line-height: 1.05;
+      color: var(--white); text-transform: uppercase; letter-spacing: 0.02em;
+    }
+    .page-hero-title span { color: var(--red); }
+    .page-hero-bar { width: 50px; height: 4px; background: var(--red); margin: 20px 0 16px; }
+    .page-hero-sub {
+      font-size: 15px; color: rgba(240,236,228,0.65);
+      max-width: 480px; line-height: 1.8;
+    }
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 28px; font-size: 12px;
+      font-family: var(--font-display); letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .breadcrumb a { color: var(--text-muted); transition: color var(--tr); }
+    .breadcrumb a:hover { color: var(--red); }
+    .breadcrumb .sep { color: var(--red); }
+    .breadcrumb .current { color: var(--white); }
+
+    /* ================================================
+       FILTER TABS — category buttons above gallery
+    ================================================= */
+    #gallery-section { padding: 70px 0 90px; }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      font-family: var(--font-display);
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 10px 22px;
+      border: 2px solid var(--border-light);
+      background: var(--white);
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: background var(--tr), color var(--tr), border-color var(--tr);
+    }
+    .filter-btn:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+    /* Active filter state */
+    .filter-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    /* ================================================
+       GALLERY GRID — CSS columns (masonry-style)
+       Items hide/show based on JS filter
+    ================================================= */
+    .gallery-grid {
+      columns: 4 280px;   /* 4 columns, min 280px each — auto-adjusts on smaller screens */
+      column-gap: 16px;
+    }
+
+    /* Each item fills its column naturally (masonry effect) */
+    .gallery-item {
+      break-inside: avoid;       /* prevent image splitting across columns */
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--dark-mid);
+      /* Transition for filter hide/show */
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Hidden state — JS toggles this class when filter doesn't match */
+    .gallery-item.hidden {
+      display: none;
+    }
+
+    /* The actual image */
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+      /* Placeholder colour shows before image loads */
+      background: var(--dark-mid);
+      min-height: 160px;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    /* Hover overlay — label + icon appear on hover */
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(192,57,43,0.92) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 18px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay-title {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 600;
+      color: var(--white); text-transform: uppercase;
+      letter-spacing: 0.06em; line-height: 1.3;
+      transform: translateY(8px);
+      transition: transform 0.35s ease;
+    }
+    .gallery-item:hover .gallery-overlay-title { transform: translateY(0); }
+
+    .gallery-overlay-cat {
+      font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.7);
+      margin-top: 4px;
+      transform: translateY(8px);
+      transition: transform 0.35s ease 0.04s;
+    }
+    .gallery-item:hover .gallery-overlay-cat { transform: translateY(0); }
+
+    /* Expand / zoom icon */
+    .gallery-zoom {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 36px; height: 36px;
+      background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: var(--white);
+      opacity: 0; transform: scale(0.7);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .gallery-item:hover .gallery-zoom { opacity: 1; transform: scale(1); }
+
+    /* No results message */
+    #no-results {
+      display: none;
+      text-align: center;
+      padding: 60px 0;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ================================================
+       LIGHTBOX — full-screen image viewer
+       Opens when a gallery item is clicked
+    ================================================= */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.95);
+      display: none;          /* shown by JS */
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.25s ease;
+    }
+    #lightbox.open { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Close button — top right */
+    .lb-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      width: 48px; height: 48px;
+      background: var(--red);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: var(--white);
+      transition: background var(--tr);
+      z-index: 2;
+    }
+    .lb-close:hover { background: var(--red-dark); }
+
+    /* Prev / Next arrow buttons */
+    .lb-arrow {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px;
+      background: rgba(192,57,43,0.85);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: var(--white);
+      transition: background var(--tr);
+      z-index: 2;
+    }
+    .lb-arrow:hover { background: var(--red); }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+
+    /* The image inside the lightbox */
+    .lb-img-wrap {
+      max-width: 90vw;
+      max-height: 85vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #lb-img {
+      max-width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      transition: opacity 0.2s ease;
+    }
+
+    /* Caption strip below image */
+    .lb-caption {
+      margin-top: 16px;
+      text-align: center;
+    }
+    .lb-caption-title {
+      font-family: var(--font-display);
+      font-size: 18px; font-weight: 600;
+      color: var(--white); text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .lb-caption-cat {
+      font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+      margin-top: 4px;
+    }
+
+    /* Counter e.g. "3 / 12" */
+    .lb-counter {
+      position: absolute;
+      bottom: 20px; left: 50%; transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: 12px; letter-spacing: 0.15em;
+      color: var(--text-muted); text-transform: uppercase;
+    }
+
+    /* ================================================
+       CTA STRIP — same red banner as index.html
+    ================================================= */
+    #gallery-cta {
+      background: var(--red);
+      padding: 64px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #gallery-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent 0, transparent 20px, rgba(0,0,0,0.05) 20px, rgba(0,0,0,0.05) 21px);
+    }
+    .gcta-inner { position: relative; z-index: 1; }
+    .gcta-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 46px);
+      font-weight: 700; color: var(--white);
+      text-transform: uppercase; line-height: 1.1;
+    }
+    .gcta-sub { font-size: 16px; color: rgba(255,255,255,0.8); margin-top: 12px; }
+    .gcta-actions { display: flex; gap: 16px; justify-content: center; margin-top: 28px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; font-family: var(--font-display);
+      font-size: 13px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 14px 34px; cursor: pointer;
+      transition: background var(--tr), color var(--tr), border-color var(--tr);
+      border: 2px solid transparent;
+    }
+    .btn-white { background: var(--white); color: var(--red); border-color: var(--white); }
+    .btn-white:hover { background: transparent; color: var(--white); }
+    .btn-outline-w { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.5); }
+    .btn-outline-w:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+
+    /* ================================================
+       FOOTER — identical to index.html
+    ================================================= */
+    footer { background: var(--dark); border-top: 4px solid var(--red); }
+    .footer-main {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px; padding: 60px 24px 48px;
+      max-width: var(--max-w); margin: 0 auto;
+    }
+    .footer-brand .logo-main { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.04em; }
+    .footer-brand .logo-sub { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); }
+    .footer-tagline { font-size: 13px; color: var(--text-muted); margin-top: 14px; line-height: 1.8; max-width: 280px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+    .footer-social a {
+      width: 36px; height: 36px; border: 1px solid var(--dark-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: var(--text-muted);
+      transition: background var(--tr), border-color var(--tr), color var(--tr);
+    }
+    .footer-social a:hover { background: var(--red); border-color: var(--red); color: var(--white); }
+    .footer-col h4 {
+      font-family: var(--font-display); font-size: 13px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--white); margin-bottom: 20px;
+      padding-bottom: 10px; border-bottom: 2px solid var(--red); display: inline-block;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; transition: color var(--tr), padding-left var(--tr); }
+    .footer-col ul li a::before { content: '›'; color: var(--red); font-size: 16px; }
+    .footer-col ul li a:hover { color: var(--white); padding-left: 6px; }
+    .footer-bottom { border-top: 1px solid var(--dark-light); text-align: center; padding: 18px 24px; }
+    .footer-bottom p { font-size: 12px; color: var(--text-muted); }
+
+    /* ================================================
+       RESPONSIVE
+    ================================================= */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .gallery-grid { columns: 2 240px; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+      .lb-arrow { display: none; }  /* swipe on mobile instead */
+    }
+    @media (max-width: 500px) {
+      .gallery-grid { columns: 1; }
+      .filter-btn { padding: 8px 14px; font-size: 11px; }
+      .footer-main { grid-template-columns: 1fr; }
+      .topbar-contact { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====================================================
+       TOP BAR
+  ===================================================== -->
+  <div id="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-contact">
+        <a href="tel:01642956789"><i class="fa fa-phone"></i>+44(0)7340376225</a>
+        <a href="mailto:info@eastonstraining.com"><i class="fa fa-envelope"></i> info@eastonstraining.com</a>
+        <a href="#"><i class="fa fa-location-dot"></i> Unit 8, Dewar House, Dunfermile, Scotland</a>
+      </div>
+      <div class="topbar-social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       NAVBAR — Gallery link marked active
+  ===================================================== -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Easton's Training Home">
+        <span class="logo-main">Easton's Training</span>
+        <span class="logo-sub">The Quiet Professionals</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li>
+          <a href="index.html#services-strip">Services <i class="fa fa-chevron-down" style="font-size:9px;margin-left:3px;"></i></a>
+          <ul class="nav-dropdown" role="list">
+            <li><a href="index.html#services-strip">Close Protection</a></li>
+            <li><a href="index.html#services-strip">Security Training</a></li>
+            <li><a href="index.html#services-strip">Risk Consultancy</a></li>
+            <li><a href="index.html#services-strip">Corporate Training</a></li>
+            <li><a href="index.html#services-strip">Firearms Training</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#packages">Packages</a></li>
+        <li><a href="index.html#team">Our Team</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li><!-- Active page -->
+        <li><a href="index.html#careers">Careers</a></li>
+        <li><a href="index.html#contact" style="color:var(--red);">Contact Us</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <nav id="mobile-nav" role="navigation" aria-label="Mobile navigation" aria-hidden="true">
+    <a href="index.html"    class="mob-link">Home</a>
+    <a href="index.html#about" class="mob-link">About Us</a>
+    <a href="index.html#services-strip" class="mob-link">Services</a>
+    <a href="index.html#packages" class="mob-link">Packages</a>
+    <a href="index.html#team"    class="mob-link">Our Team</a>
+    <a href="gallery.html"       class="mob-link" style="color:var(--red)">Gallery</a>
+    <a href="index.html#careers" class="mob-link">Careers</a>
+    <a href="index.html#contact" class="mob-link">Contact Us</a>
+  </nav>
+
+
+  <!-- ====================================================
+       PAGE HERO BANNER
+       To add a background image, uncomment the url() line
+       in the #page-hero CSS rule above
+  ===================================================== -->
+  <section id="page-hero" aria-label="Gallery page header">
+    <div class="page-hero-content">
+      <span class="page-hero-tag">&#9632; Easton's Training</span>
+      <h1 class="page-hero-title">Training <span>Gallery</span></h1>
+      <div class="page-hero-bar"></div>
+      <p class="page-hero-sub">A look inside our training programmes, facilities, and the professionals we develop.</p>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep">›</span>
+        <span class="current">Gallery</span>
+      </nav>
+    </div>
+  </section>
+
+
+  <!-- ====================================================
+       GALLERY SECTION
+  ===================================================== -->
+  <section id="gallery-section" aria-labelledby="gallery-h2">
+    <div class="container">
+
+      <h2 id="gallery-h2" style="position:absolute;opacity:0;pointer-events:none;">Photo Gallery</h2>
+
+      <!-- ---- FILTER BUTTONS ----
+           Each button has a data-filter value.
+           Gallery items have a data-cat value.
+           JS matches them to show/hide items.
+      -->
+      <div class="filter-bar" role="tablist" aria-label="Filter gallery by category">
+        <button class="filter-btn active" data-filter="all"        role="tab" aria-selected="true">All Photos</button>
+        <button class="filter-btn"        data-filter="training"   role="tab" aria-selected="false">Training</button>
+        <button class="filter-btn"        data-filter="protection" role="tab" aria-selected="false">Close Protection</button>
+        <button class="filter-btn"        data-filter="firearms"   role="tab" aria-selected="false">Firearms</button>
+        <button class="filter-btn"        data-filter="corporate"  role="tab" aria-selected="false">Corporate</button>
+        <button class="filter-btn"        data-filter="team"       role="tab" aria-selected="false">Our Team</button>
+      </div>
+
+      <!-- ---- GALLERY GRID ----
+           HOW TO ADD YOUR OWN PHOTOS:
+           1. Put your images in an /images/gallery/ folder
+           2. Copy any .gallery-item block below
+           3. Change src, alt, data-cat, data-title, and data-cat-label
+           4. data-cat must match one of the filter button data-filter values
+
+           The columns layout (CSS masonry) handles all sizing automatically —
+           portrait, landscape, and square all work without any extra classes.
+      -->
+      <div class="gallery-grid" id="galleryGrid">
+
+        <!-- ======= TRAINING PHOTOS ======= -->
+
+        <div class="gallery-item" data-cat="training" data-title="Close Protection Drills" data-cat-label="Training">
+          <!-- REPLACE src with your image path e.g. src="images/gallery/training-01.jpg" -->
+          <img src="images/gallery/training-01.jpg" alt="Close protection drills in session" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Close Protection Drills</div>
+            <div class="gallery-overlay-cat">Training</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="training" data-title="Surveillance Techniques" data-cat-label="Training">
+          <img src="images/gallery/training-02.jpg" alt="Surveillance techniques class" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Surveillance Techniques</div>
+            <div class="gallery-overlay-cat">Training</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="training" data-title="Conflict Management Workshop" data-cat-label="Training">
+          <img src="images/gallery/training-03.jpg" alt="Conflict management workshop" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Conflict Management Workshop</div>
+            <div class="gallery-overlay-cat">Training</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="training" data-title="Security Officer Course" data-cat-label="Training">
+          <img src="images/gallery/training-04.jpg" alt="Security officer course" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Security Officer Course</div>
+            <div class="gallery-overlay-cat">Training</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="training" data-title="Medical First Aid Training" data-cat-label="Training">
+          <img src="images/gallery/training-05.jpg" alt="Medical first aid training" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Medical First Aid Training</div>
+            <div class="gallery-overlay-cat">Training</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <!-- ======= CLOSE PROTECTION PHOTOS ======= -->
+
+        <div class="gallery-item" data-cat="protection" data-title="Advance Team Briefing" data-cat-label="Close Protection">
+          <img src="images/gallery/protection-01.jpg" alt="Advance team briefing" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Advance Team Briefing</div>
+            <div class="gallery-overlay-cat">Close Protection</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="protection" data-title="Residential Security Assessment" data-cat-label="Close Protection">
+          <img src="images/gallery/protection-02.jpg" alt="Residential security assessment" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Residential Security Assessment</div>
+            <div class="gallery-overlay-cat">Close Protection</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="protection" data-title="Motorcade Positioning" data-cat-label="Close Protection">
+          <img src="images/gallery/protection-03.jpg" alt="Motorcade positioning exercise" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Motorcade Positioning</div>
+            <div class="gallery-overlay-cat">Close Protection</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <!-- ======= FIREARMS PHOTOS ======= -->
+
+        <div class="gallery-item" data-cat="firearms" data-title="Pistol Fundamentals" data-cat-label="Firearms">
+          <img src="images/gallery/firearms-01.jpg" alt="Pistol fundamentals training" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Pistol Fundamentals</div>
+            <div class="gallery-overlay-cat">Firearms</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="firearms" data-title="MFCC Qualification" data-cat-label="Firearms">
+          <img src="images/gallery/firearms-02.jpg" alt="MFCC qualification course" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">MFCC Qualification</div>
+            <div class="gallery-overlay-cat">Firearms</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="firearms" data-title="Assault Rifle Course" data-cat-label="Firearms">
+          <img src="images/gallery/firearms-03.jpg" alt="Assault rifle training course" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Assault Rifle Course</div>
+            <div class="gallery-overlay-cat">Firearms</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <!-- ======= CORPORATE PHOTOS ======= -->
+
+        <div class="gallery-item" data-cat="corporate" data-title="Corporate Risk Workshop" data-cat-label="Corporate">
+          <img src="images/gallery/corporate-01.jpg" alt="Corporate risk management workshop" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Corporate Risk Workshop</div>
+            <div class="gallery-overlay-cat">Corporate</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="corporate" data-title="Bespoke Staff Training" data-cat-label="Corporate">
+          <img src="images/gallery/corporate-02.jpg" alt="Bespoke staff training session" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Bespoke Staff Training</div>
+            <div class="gallery-overlay-cat">Corporate</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="corporate" data-title="Fire Safety Awareness" data-cat-label="Corporate">
+          <img src="images/gallery/corporate-03.jpg" alt="Fire safety awareness session" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Fire Safety Awareness</div>
+            <div class="gallery-overlay-cat">Corporate</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <!-- ======= TEAM PHOTOS ======= -->
+
+        <div class="gallery-item" data-cat="team" data-title="The Easton's Training Team" data-cat-label="Our Team">
+          <img src="images/gallery/team-01.jpg" alt="Easton's Training team photo" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">The Easton's Training Team</div>
+            <div class="gallery-overlay-cat">Our Team</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="team" data-title="Instructor Briefing" data-cat-label="Our Team">
+          <img src="images/gallery/team-02.jpg" alt="Instructor briefing session" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Instructor Briefing</div>
+            <div class="gallery-overlay-cat">Our Team</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-cat="team" data-title="Graduation Day" data-cat-label="Our Team">
+          <img src="images/gallery/team-03.jpg" alt="Student graduation day" loading="lazy" />
+          <div class="gallery-overlay">
+            <div class="gallery-overlay-title">Graduation Day</div>
+            <div class="gallery-overlay-cat">Our Team</div>
+          </div>
+          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
+        </div>
+
+      </div><!-- /gallery-grid -->
+
+      <!-- Shown when active filter has no matching items -->
+      <div id="no-results">
+        <i class="fa fa-images" style="font-size:48px; color:var(--border-light); display:block; margin-bottom:16px;"></i>
+        No photos in this category yet.
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ====================================================
+       LIGHTBOX — full screen image viewer
+       Opened by JS when any gallery item is clicked
+  ===================================================== -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+
+    <!-- Close button -->
+    <button class="lb-close" id="lbClose" aria-label="Close lightbox">
+      <i class="fa fa-xmark"></i>
+    </button>
+
+    <!-- Previous image -->
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous image">
+      <i class="fa fa-chevron-left"></i>
+    </button>
+
+    <!-- Image + caption -->
+    <div class="lb-img-wrap">
+      <img id="lb-img" src="" alt="" />
+      <div class="lb-caption">
+        <div class="lb-caption-title" id="lb-title"></div>
+        <div class="lb-caption-cat"   id="lb-cat"></div>
+      </div>
+    </div>
+
+    <!-- Next image -->
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Next image">
+      <i class="fa fa-chevron-right"></i>
+    </button>
+
+    <!-- Counter e.g. 3 / 12 -->
+    <div class="lb-counter" id="lb-counter"></div>
+
+  </div>
+
+
+  <!-- ====================================================
+       CTA STRIP — encourages contact
+  ===================================================== -->
+  <section id="gallery-cta" aria-label="Call to action">
+    <div class="gcta-inner">
+      <h2 class="gcta-title">Want to See More? Come Train With Us.</h2>
+      <p class="gcta-sub">Get in touch to discuss a programme tailored to your needs.</p>
+      <div class="gcta-actions">
+        <a href="index.html#contact" class="btn btn-white">Contact Us</a>
+        <a href="tel:01642956789"    class="btn btn-outline-w"><i class="fa fa-phone" style="margin-right:8px;"></i>01642 956789</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================================
+       FOOTER
+  ===================================================== -->
+  <footer role="contentinfo">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="logo-main">Easton's Training</div>
+        <div class="logo-sub">The Quiet Professionals</div>
+        <p class="footer-tagline">A full spectrum security and training company delivering elite close protection, consultancy, and specialist instruction across the UK.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#packages">Packages</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="tel:01642956789"><i class="fa fa-phone" style="margin-right:6px;color:var(--red);"></i>01642 956789</a></li>
+          <li><a href="mailto:info@eastonstraining.com"><i class="fa fa-envelope" style="margin-right:6px;color:var(--red);"></i>info@eastonstraining.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="footerYear"></span> Easton's Training. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- ====================================================
+       JAVASCRIPT
+       1. Mobile menu
+       2. Gallery filter — show/hide items by category
+       3. Lightbox — open, close, prev/next, keyboard nav
+       4. Touch/swipe support for lightbox on mobile
+       5. Footer year
+  ===================================================== -->
+  <script>
+    'use strict';
+
+    /* ------------------------------------------------
+       1. MOBILE MENU
+    ------------------------------------------------ */
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    navToggle.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
+      mobileNav.setAttribute('aria-hidden', !open);
+      const s = navToggle.querySelectorAll('span');
+      s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)'   : '';
+      s[1].style.opacity   = open ? '0' : '';
+      s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+      navToggle.querySelectorAll('span').forEach(s => s.removeAttribute('style'));
+    }));
+
+
+    /* ------------------------------------------------
+       2. GALLERY FILTER
+       Reads data-filter on button vs data-cat on items
+    ------------------------------------------------ */
+    const filterBtns  = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const noResults   = document.getElementById('no-results');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        // Update active button
+        filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected','true');
+
+        // Show / hide gallery items
+        let visibleCount = 0;
+        galleryItems.forEach(item => {
+          const match = filter === 'all' || item.dataset.cat === filter;
+          item.classList.toggle('hidden', !match);
+          if (match) visibleCount++;
+        });
+
+        // Show "no results" message if needed
+        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+
+        // Rebuild the visible items list for lightbox navigation
+        buildVisibleList();
+      });
+    });
+
+
+    /* ------------------------------------------------
+       3. LIGHTBOX
+       visibleItems — array of currently visible gallery items
+       currentIndex — which one is open
+    ------------------------------------------------ */
+    let visibleItems = [];
+    let currentIndex = 0;
+
+    // Build the list of currently visible items (used by filter + lightbox nav)
+    function buildVisibleList() {
+      visibleItems = Array.from(galleryItems).filter(el => !el.classList.contains('hidden'));
+    }
+    buildVisibleList(); // run once on page load
+
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lb-img');
+    const lbTitle   = document.getElementById('lb-title');
+    const lbCat     = document.getElementById('lb-cat');
+    const lbCounter = document.getElementById('lb-counter');
+    const lbClose   = document.getElementById('lbClose');
+    const lbPrev    = document.getElementById('lbPrev');
+    const lbNext    = document.getElementById('lbNext');
+
+    // Open lightbox to a specific item index
+    function openLightbox(index) {
+      currentIndex = index;
+      const item = visibleItems[currentIndex];
+      const img  = item.querySelector('img');
+
+      lbImg.src   = img.src;
+      lbImg.alt   = img.alt;
+      lbTitle.textContent = item.dataset.title    || '';
+      lbCat.textContent   = item.dataset.catLabel || item.dataset.cat || '';
+      lbCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+      lbClose.focus();
+    }
+
+    // Close lightbox
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Navigate to previous image (wraps around)
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+      openLightbox(currentIndex);
+    }
+
+    // Navigate to next image (wraps around)
+    function showNext() {
+      currentIndex = (currentIndex + 1) % visibleItems.length;
+      openLightbox(currentIndex);
+    }
+
+    // Attach click handler to every gallery item
+    galleryItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        buildVisibleList(); // refresh in case filter changed
+        const idx = visibleItems.indexOf(item);
+        if (idx !== -1) openLightbox(idx);
+      });
+    });
+
+    // Lightbox control buttons
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click',  showPrev);
+    lbNext.addEventListener('click',  showNext);
+
+    // Click outside image closes lightbox
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowLeft')   showPrev();
+      if (e.key === 'ArrowRight')  showNext();
+    });
+
+
+    /* ------------------------------------------------
+       4. TOUCH / SWIPE SUPPORT (mobile lightbox)
+       Detects left/right swipe to navigate images
+    ------------------------------------------------ */
+    let touchStartX = 0;
+    let touchEndX   = 0;
+
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {  // minimum 50px swipe threshold
+        diff > 0 ? showNext() : showPrev();
+      }
+    }, { passive: true });
+
+
+    /* ------------------------------------------------
+       5. FOOTER YEAR
+    ------------------------------------------------ */
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+  </script>
+</body>
+</html>
