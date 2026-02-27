@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | Easton's Training</title>
+  <title>Armed | Forces Covenant</title>
 
   <!-- Same fonts as index.html -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -591,7 +591,8 @@
         </li>
         <li><a href="index.html#packages">Packages</a></li>
         <li><a href="index.html#team">Our Team</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li><!-- Active page -->
+        <li><a href="covenant.html" class="active">Armed Forces Covenant</a></li><!-- Active page -->
+        
         <li><a href="index.html#careers">Careers</a></li>
         <li><a href="index.html#contact" style="color:var(--red);">Contact Us</a></li>
       </ul>
@@ -623,222 +624,39 @@
   <section id="page-hero" aria-label="Gallery page header">
     <div class="page-hero-content">
       <span class="page-hero-tag">&#9632; Easton's Training</span>
-      <h1 class="page-hero-title">Training <span>Gallery</span></h1>
+      <h1 class="page-hero-title">Armed <span>Forces Covenant</span></h1>
       <div class="page-hero-bar"></div>
-      <p class="page-hero-sub">A look inside our training programmes, facilities, and the professionals we develop.</p>
+      <p class="page-hero-sub">What is the Armed Forces Covenant?</p>
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
         <span class="sep">›</span>
-        <span class="current">Gallery</span>
+        <span class="current">Armed Forces Covenant</span>
       </nav>
     </div>
   </section>
 
 
   <!-- ====================================================
-       GALLERY SECTION
+       AFC SECTION
   ===================================================== -->
   <section id="gallery-section" aria-labelledby="gallery-h2">
     <div class="container">
 
-      <h2 id="gallery-h2" style="position:absolute;opacity:0;pointer-events:none;">Photo Gallery</h2>
+      <h2 id="gallery-h2" style="position:absolute;opacity:0;pointer-events:none;">Armed Forces Covenant</h2>
 
-      <!-- ---- FILTER BUTTONS ----
-           Each button has a data-filter value.
-           Gallery items have a data-cat value.
-           JS matches them to show/hide items.
-      -->
-      <div class="filter-bar" role="tablist" aria-label="Filter gallery by category">
-        <button class="filter-btn active" data-filter="all"        role="tab" aria-selected="true">All Photos</button>
-        <button class="filter-btn"        data-filter="training"   role="tab" aria-selected="false">Training</button>
-        <button class="filter-btn"        data-filter="protection" role="tab" aria-selected="false">Close Protection</button>
-        <button class="filter-btn"        data-filter="firearms"   role="tab" aria-selected="false">Firearms</button>
-        <button class="filter-btn"        data-filter="corporate"  role="tab" aria-selected="false">Corporate</button>
-        <button class="filter-btn"        data-filter="team"       role="tab" aria-selected="false">Our Team</button>
-      </div>
+        <div style="max-width:700px;margin:0 auto;font-size:16px;line-height:1.8;color:var(--text-dark);">
+            <p>To those who proudly protect our nation, who do so with honour, courage, and commitment, the Armed Forces Covenant is the nation’s commitment to you.
 
-      <!-- ---- GALLERY GRID ----
-           HOW TO ADD YOUR OWN PHOTOS:
-           1. Put your images in an /images/gallery/ folder
-           2. Copy any .gallery-item block below
-           3. Change src, alt, data-cat, data-title, and data-cat-label
-           4. data-cat must match one of the filter button data-filter values
+It is a pledge that together we acknowledge and understand that those who serve or who have served in the armed forces, and their families, 
+should be treated with fairness and respect in the communities, economy and society they serve with their lives..</p>
+    
+            <p><h3>Recognition Scheme</h3></p>
+    
+            <p>The Employer Recognition Scheme (ERS)  acknowledges employers who have provided exceptional support to the armed forces community and defence by going above and beyond their covenant pledges.
 
-           The columns layout (CSS masonry) handles all sizing automatically —
-           portrait, landscape, and square all work without any extra classes.
-      -->
-      <div class="gallery-grid" id="galleryGrid">
+Through a 3 tier approach of bronze, silver and gold awards, the scheme recognises the different levels of commitment provided by employers. This allows the Ministry of Defence to publicly thank and honour those organisation for their support.
 
-        <!-- ======= TRAINING PHOTOS ======= -->
-
-        <div class="gallery-item" data-cat="training" data-title="Close Protection Drills" data-cat-label="Training">
-          <!-- REPLACE src with your image path e.g. src="images/gallery/training-01.jpg" -->
-          <img src="images/gallery/training-01.jpg" alt="Close protection drills in session" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Close Protection Drills</div>
-            <div class="gallery-overlay-cat">Training</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="training" data-title="Surveillance Techniques" data-cat-label="Training">
-          <img src="images/gallery/training-02.jpg" alt="Surveillance techniques class" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Surveillance Techniques</div>
-            <div class="gallery-overlay-cat">Training</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="training" data-title="Conflict Management Workshop" data-cat-label="Training">
-          <img src="images/gallery/training-03.jpg" alt="Conflict management workshop" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Conflict Management Workshop</div>
-            <div class="gallery-overlay-cat">Training</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="training" data-title="Security Officer Course" data-cat-label="Training">
-          <img src="images/gallery/training-04.jpg" alt="Security officer course" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Security Officer Course</div>
-            <div class="gallery-overlay-cat">Training</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="training" data-title="Medical First Aid Training" data-cat-label="Training">
-          <img src="images/gallery/training-05.jpg" alt="Medical first aid training" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Medical First Aid Training</div>
-            <div class="gallery-overlay-cat">Training</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <!-- ======= CLOSE PROTECTION PHOTOS ======= -->
-
-        <div class="gallery-item" data-cat="protection" data-title="Advance Team Briefing" data-cat-label="Close Protection">
-          <img src="images/gallery/protection-01.jpg" alt="Advance team briefing" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Advance Team Briefing</div>
-            <div class="gallery-overlay-cat">Close Protection</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="protection" data-title="Residential Security Assessment" data-cat-label="Close Protection">
-          <img src="images/gallery/protection-02.jpg" alt="Residential security assessment" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Residential Security Assessment</div>
-            <div class="gallery-overlay-cat">Close Protection</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="protection" data-title="Motorcade Positioning" data-cat-label="Close Protection">
-          <img src="images/gallery/protection-03.jpg" alt="Motorcade positioning exercise" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Motorcade Positioning</div>
-            <div class="gallery-overlay-cat">Close Protection</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <!-- ======= FIREARMS PHOTOS ======= -->
-
-        <div class="gallery-item" data-cat="firearms" data-title="Pistol Fundamentals" data-cat-label="Firearms">
-          <img src="images/gallery/firearms-01.jpg" alt="Pistol fundamentals training" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Pistol Fundamentals</div>
-            <div class="gallery-overlay-cat">Firearms</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="firearms" data-title="MFCC Qualification" data-cat-label="Firearms">
-          <img src="images/gallery/firearms-02.jpg" alt="MFCC qualification course" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">MFCC Qualification</div>
-            <div class="gallery-overlay-cat">Firearms</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="firearms" data-title="Assault Rifle Course" data-cat-label="Firearms">
-          <img src="images/gallery/firearms-03.jpg" alt="Assault rifle training course" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Assault Rifle Course</div>
-            <div class="gallery-overlay-cat">Firearms</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <!-- ======= CORPORATE PHOTOS ======= -->
-
-        <div class="gallery-item" data-cat="corporate" data-title="Corporate Risk Workshop" data-cat-label="Corporate">
-          <img src="images/gallery/corporate-01.jpg" alt="Corporate risk management workshop" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Corporate Risk Workshop</div>
-            <div class="gallery-overlay-cat">Corporate</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="corporate" data-title="Bespoke Staff Training" data-cat-label="Corporate">
-          <img src="images/gallery/corporate-02.jpg" alt="Bespoke staff training session" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Bespoke Staff Training</div>
-            <div class="gallery-overlay-cat">Corporate</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="corporate" data-title="Fire Safety Awareness" data-cat-label="Corporate">
-          <img src="images/gallery/corporate-03.jpg" alt="Fire safety awareness session" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Fire Safety Awareness</div>
-            <div class="gallery-overlay-cat">Corporate</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <!-- ======= TEAM PHOTOS ======= -->
-
-        <div class="gallery-item" data-cat="team" data-title="The Easton's Training Team" data-cat-label="Our Team">
-          <img src="images/gallery/team-01.jpg" alt="Easton's Training team photo" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">The Easton's Training Team</div>
-            <div class="gallery-overlay-cat">Our Team</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="team" data-title="Instructor Briefing" data-cat-label="Our Team">
-          <img src="images/gallery/team-02.jpg" alt="Instructor briefing session" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Instructor Briefing</div>
-            <div class="gallery-overlay-cat">Our Team</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-item" data-cat="team" data-title="Graduation Day" data-cat-label="Our Team">
-          <img src="images/gallery/team-03.jpg" alt="Student graduation day" loading="lazy" />
-          <div class="gallery-overlay">
-            <div class="gallery-overlay-title">Graduation Day</div>
-            <div class="gallery-overlay-cat">Our Team</div>
-          </div>
-          <div class="gallery-zoom"><i class="fa fa-expand"></i></div>
-        </div>
-
-      </div><!-- /gallery-grid -->
-
-      <!-- Shown when active filter has no matching items -->
-      <div id="no-results">
-        <i class="fa fa-images" style="font-size:48px; color:var(--border-light); display:block; margin-bottom:16px;"></i>
-        No photos in this category yet.
+You can nominate yourself for a Bronze award, Silver and Gold awards are bestowed to organisations meeting specific criteria. </p>
       </div>
 
     </div>
