@@ -570,12 +570,12 @@
           <div class="pkg-name">Close Protection</div>
           <div class="pkg-divider"></div>
           <ul class="pkg-features">
-            <li class="pkg-feat"><i class="fa fa-check"></i>Roles and Responsibilities</li>
+            <li class="pkg-feat"><i class="fa fa-check"></i>SIA CP Licence Award</li>
             <li class="pkg-feat"><i class="fa fa-check"></i>Threat &amp; Risk Assessment</li>
-            <li class="pkg-feat"><i class="fa fa-check"></i>Legislation of a CP Operative</li>
-            <li class="pkg-feat"><i class="fa fa-check"></i>Enhanced Surveillance package</li>
-            <li class="pkg-feat"><i class="fa fa-check"></i>Foot Drills</li>
-            <li class="pkg-feat"><i class="fa fa-check"></i>Venue Security</li>
+            <li class="pkg-feat"><i class="fa fa-check"></i>Surveillance Awareness</li>
+            <li class="pkg-feat"><i class="fa fa-check"></i>Medical First Aid</li>
+            <li class="pkg-feat"><i class="fa fa-check"></i>Course Certificate</li>
+            <li class="pkg-feat"><i class="fa fa-check"></i>Online Tutor Support</li>
           </ul>
           <button class="pkg-btn" onclick="openCourseModal('close-protection')">Enquire Now</button>
         </div>
@@ -1097,7 +1097,7 @@
                 <div class="form-group" style="margin-bottom:0;"><label for="cardExpiry">Expiry *</label><input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" /></div>
                 <div class="form-group" style="margin-bottom:0;"><label for="cardCvc">CVV *</label><input type="text" id="cardCvc" placeholder="123" maxlength="4" /></div>
               </div>
-            </div>
+            <!-- </div> -->
             <div id="paypalNotice" style="display:none;font-size:14px;color:var(--text-mid);padding:12px;background:var(--white);border:1px solid var(--border-light);">
               <i class="fab fa-paypal" style="color:#003087;margin-right:6px;"></i>You'll be redirected to PayPal to complete payment securely after clicking Register &amp; Pay.
             </div>
@@ -1129,9 +1129,8 @@
   const COURSES = {
     'close-protection': {
       name:'Close Protection', tag:'Course', price:'£995', priceNum:995,
-      desc:'Our Close Protection course is run over 23 days, which includes both security and medical lessons, depending on your requirements. The course can also be tailored to suit any specific needs. By working closely with your organisation, we can conduct an analysis of your situation and provide the best solutions possible for your employees. COURSE SYLLABUS: Unit 1 & 2 Principles & working as a Close protection officer',
-      
-      features:['Roles and Responsibilities','Legislation of a CP Operative','Threat Assesment','Risk Management','Personal & Professional Skills','Enhanced Surveillance package','Search Procedures','Foot Drills','Venue Security','Route Planning','Reconnaissance','Transport Management','Planning & Operating Units 3,4,5 & 6','Cnflict Management within the Private Security Industry','Principles of Terror Threat Awareness in the Private Security Industry','Door Supervision responsibilities for Close Protection Operatives','Physical Intervention within the private security industry, including breakaway techniques, restraint procedures, and legal use of force'],
+      desc:'Our SIA-approved Close Protection course is delivered by still-operational CP officers. Covers every aspect of personal protection for HNW individuals, executives, and public figures.',
+      features:['SIA CP Licence Award','Threat & Risk Assessment','Surveillance Awareness','Medical First Aid','Route & Venue Reconnaissance','Course Certificate'],
       dates:[{label:'Jan 12 – 20',duration:'9 days',spots:'6 places left',low:false},{label:'Feb 10 – 18',duration:'9 days',spots:'8 places left',low:false},{label:'Mar 2 – 10',duration:'9 days',spots:'3 places left',low:true}]
     },
     'door-supervisor': {
