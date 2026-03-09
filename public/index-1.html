@@ -326,7 +326,8 @@
     .secure-note{text-align:center;font-size:12px;color:var(--text-muted);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;}
     .secure-note i{color:#27ae60;}
     .field-error{border-color:#e74c3c!important;}
-    @keyframes spin{to{transform:rotate(360deg);}}
+    .modal-success{display:none;text-align:center;padding:56px 32px;}
+    .modal-success.active{display:block;}
     .success-icon{width:72px;height:72px;background:#27ae60;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--white);margin:0 auto 24px;}
     .success-title{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-dark);text-transform:uppercase;margin-bottom:12px;}
     .success-sub{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:400px;margin:0 auto 28px;}
@@ -371,7 +372,7 @@
     <div class="topbar-inner">
       <div class="topbar-contact">
         <a href="tel:+447340376225"><i class="fa fa-phone"></i>+44(0)7340 376225</a>
-        <a href="/cdn-cgi/l/email-protection#fd94939b92bd989c8e8992938e898f9c949394939ad39e9290"><i class="fa fa-envelope"></i><span class="__cf_email__" data-cfemail="c5acaba3aa85a0a4b6b1aaabb6b1b7a4acabacaba2eba6aaa8">[email&#160;protected]</span></a>
+        <a href="mailto:info@eastonstraining.com"><i class="fa fa-envelope"></i>info@eastonstraining.com</a>
         <a href="#"><i class="fa fa-location-dot"></i>Unit 8, Dewar House, Dunfermline</a>
       </div>
       <div class="topbar-social">
@@ -761,7 +762,7 @@
           </ul>
           <button class="pkg-btn" onclick="openCourseModal('cp-refresher')">Enquire Now</button>
         </div>
-        <!-- <div class="pkg-card">
+        <div class="pkg-card">
           <span class="pkg-badge">Refresher</span>
           <div class="pkg-name">EFAW (Refresher)</div>
           <div class="pkg-divider"></div>
@@ -774,7 +775,7 @@
             <li class="pkg-feat"><i class="fa fa-check"></i>24/7 Tutor Access</li>
           </ul>
           <button class="pkg-btn" onclick="openCourseModal('efaw-refresher')">Enquire Now</button>
-        </div> -->
+        </div>
         <div class="pkg-card">
           <span class="pkg-badge">Refresher</span>
           <div class="pkg-name">Security Officer (Refresher)</div>
@@ -1004,7 +1005,7 @@
           </div>
           <div class="contact-detail">
             <div class="contact-icon"><i class="fa fa-envelope"></i></div>
-            <div><div class="cd-label">Email</div><div class="cd-val"><a href="/cdn-cgi/l/email-protection#0f666169604f6a6e7c7b60617c7b7d6e6661666168216c6062"><span class="__cf_email__" data-cfemail="543d3a323b14313527203b3a272026353d3a3d3a337a373b39">[email&#160;protected]</span></a></div></div>
+            <div><div class="cd-label">Email</div><div class="cd-val"><a href="mailto:info@eastonstraining.com">info@eastonstraining.com</a></div></div>
           </div>
           <div class="contact-detail">
             <div class="contact-icon"><i class="fa fa-location-dot"></i></div>
@@ -1076,7 +1077,7 @@
       <div class="footer-col">
         <h4>Contact Us</h4>
         <div class="f-contact-item"><i class="fa fa-phone"></i><span><a href="tel:+447340376225">+44(0)7340 376225</a></span></div>
-        <div class="f-contact-item"><i class="fa fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection#ee87808881ae8b8f9d9a81809d9a9c8f8780878089c08d8183"><span class="__cf_email__" data-cfemail="91f8fff7fed1f4f0e2e5feffe2e5e3f0f8fff8fff6bff2fefc">[email&#160;protected]</span></a></span></div>
+        <div class="f-contact-item"><i class="fa fa-envelope"></i><span><a href="mailto:info@eastonstraining.com">info@eastonstraining.com</a></span></div>
         <div class="f-contact-item"><i class="fa fa-location-dot"></i><span>Unit 8, Dewar House<br>Dunfermline, Scotland, UK</span></div>
         <p style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-top:20px;margin-bottom:8px;">Newsletter</p>
         <form class="newsletter-form" onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('input').placeholder='Subscribed!';">
@@ -1092,42 +1093,21 @@
 
 
   <!-- ============================================================
-       COURSE MODAL
+       COURSE MODAL — Step 1: dates  |  Step 2: register & pay
   ============================================================= -->
   <div id="courseModal" role="dialog" aria-modal="true" aria-label="Course booking">
     <div class="modal-box">
       <button class="modal-close" id="modalClose" aria-label="Close"><i class="fa fa-xmark"></i></button>
 
-      <!-- SCREEN: Processing (redirecting to Stripe) -->
-      <div id="screenProcessing" style="display:none;text-align:center;padding:56px 32px;">
-        <div style="width:72px;height:72px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;margin:0 auto 24px;">
-          <i class="fa fa-spinner" style="animation:spin 0.9s linear infinite;"></i>
-        </div>
-        <div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-dark);text-transform:uppercase;margin-bottom:12px;">Redirecting&hellip;</div>
-        <p style="font-size:15px;color:var(--text-mid);max-width:380px;margin:0 auto;">You&rsquo;re being securely redirected to Stripe Checkout. Please do not close this window.</p>
+      <!-- SUCCESS SCREEN -->
+      <div class="modal-success" id="modalSuccess">
+        <div class="success-icon"><i class="fa fa-check"></i></div>
+        <div class="success-title">Registration Complete!</div>
+        <p class="success-sub">Thank you — you'll receive a confirmation email shortly. Our team will be in touch with further details about your course.</p>
+        <button class="pkg-btn" style="display:inline-block;padding:14px 36px;border:2px solid var(--border-light);" onclick="closeModal()">Close</button>
       </div>
 
-      <!-- SCREEN: Success -->
-      <div id="screenSuccess" style="display:none;text-align:center;padding:56px 32px;">
-        <div style="width:72px;height:72px;background:#27ae60;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;margin:0 auto 24px;">
-          <i class="fa fa-check"></i>
-        </div>
-        <div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-dark);text-transform:uppercase;margin-bottom:12px;">Booking Confirmed!</div>
-        <p style="font-size:15px;color:var(--text-mid);line-height:1.7;max-width:400px;margin:0 auto 28px;">Your payment was successful. A confirmation email has been sent to <strong id="successEmailEl"></strong>. We look forward to welcoming you on the course.</p>
-        <button onclick="closeModal()" style="display:inline-block;padding:14px 40px;border:2px solid var(--border-light);background:transparent;font-family:var(--font-display);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;">Close</button>
-      </div>
-
-      <!-- SCREEN: Cancelled -->
-      <div id="screenCancelled" style="display:none;text-align:center;padding:56px 32px;">
-        <div style="width:72px;height:72px;background:#e67e22;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;margin:0 auto 24px;">
-          <i class="fa fa-rotate-left"></i>
-        </div>
-        <div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-dark);text-transform:uppercase;margin-bottom:12px;">Payment Cancelled</div>
-        <p style="font-size:15px;color:var(--text-mid);line-height:1.7;max-width:400px;margin:0 auto 28px;">No payment was taken. You can try again below.</p>
-        <button onclick="showScreen('step2')" style="display:inline-block;padding:14px 40px;border:2px solid var(--border-light);background:transparent;font-family:var(--font-display);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;">Try Again</button>
-      </div>
-
-      <!-- STEP 1: Course info + date selection -->
+      <!-- STEP 1: Course details + date selection -->
       <div class="modal-step active" id="step1">
         <div class="modal-header">
           <span class="modal-course-tag" id="mTag">Course</span>
@@ -1135,20 +1115,19 @@
           <p class="modal-course-desc" id="mDesc"></p>
         </div>
         <div class="modal-body">
-          <div class="modal-section-label">What&rsquo;s Included</div>
+          <div class="modal-section-label">What's Included</div>
           <div class="modal-features" id="mFeatures"></div>
-          <div class="modal-section-label">Available Dates &mdash; 2026</div>
+          <div class="modal-section-label">Available Dates — 2026</div>
           <div class="date-list" id="mDates"></div>
         </div>
       </div>
 
-      <!-- STEP 2: Customer details + pay button -->
+      <!-- STEP 2: Registration + payment -->
       <div class="modal-step" id="step2">
         <div class="modal-reg-header">
           <button class="modal-back" id="modalBack" aria-label="Back"><i class="fa fa-arrow-left"></i></button>
-          <div class="modal-reg-title">Your Details<span id="regSubtitle"></span></div>
+          <div class="modal-reg-title">Register &amp; Pay<span id="regSubtitle"></span></div>
         </div>
-
         <div class="booking-summary">
           <i class="fa fa-calendar-check"></i>
           <div>
@@ -1157,47 +1136,328 @@
           </div>
           <div class="bs-price" id="bsPrice"></div>
         </div>
-
         <div class="reg-form">
           <div class="form-row">
-            <div class="form-group"><label for="regFirst">First Name *</label><input type="text" id="regFirst" placeholder="John" autocomplete="given-name" /></div>
-            <div class="form-group"><label for="regLast">Last Name *</label><input type="text" id="regLast" placeholder="Smith" autocomplete="family-name" /></div>
+            <div class="form-group"><label for="regFirst">First Name *</label><input type="text" id="regFirst" placeholder="John" required /></div>
+            <div class="form-group"><label for="regLast">Last Name *</label><input type="text" id="regLast" placeholder="Smith" required /></div>
           </div>
-          <div class="form-group"><label for="regEmail">Email Address *</label><input type="email" id="regEmail" placeholder="john.smith@email.com" autocomplete="email" /></div>
-          <div class="form-group"><label for="regPhone">Phone Number *</label><input type="tel" id="regPhone" placeholder="+44 7700 900000" autocomplete="tel" /></div>
-          <div class="form-group"><label for="regNotes">Additional Notes (optional)</label><input type="text" id="regNotes" placeholder="Any special requirements&hellip;" /></div>
-
+          <div class="form-group"><label for="regEmail">Email Address *</label><input type="email" id="regEmail" placeholder="john.smith@email.com" required /></div>
+          <div class="form-group"><label for="regPhone">Phone Number *</label><input type="tel" id="regPhone" placeholder="+44 7700 900000" required /></div>
+          <div class="form-group"><label for="regNotes">Additional Notes (optional)</label><input type="text" id="regNotes" placeholder="Any special requirements or questions…" /></div>
           <div class="payment-section">
-            <div class="payment-label">Payment</div>
-            <p style="font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:16px;">
-              You will be securely redirected to <strong>Stripe Checkout</strong> to complete payment. We accept all major credit &amp; debit cards.
-            </p>
+            <div class="payment-label">Payment Method</div>
+            <div class="payment-methods">
+              <div class="pay-method selected" data-method="card" onclick="selectPayMethod(this)"><i class="fa fa-credit-card"></i>Card</div>
+              <div class="pay-method" data-method="paypal" onclick="selectPayMethod(this)"><i class="fab fa-paypal"></i>PayPal</div>
+              <div class="pay-method" data-method="bank" onclick="selectPayMethod(this)"><i class="fa fa-building-columns"></i>Bank Transfer</div>
+            </div>
+            <div id="cardFields">
+              <div class="form-group"><label for="cardNumber">Card Number *</label><input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" /></div>
+              <div class="card-fields">
+                <div class="form-group" style="margin-bottom:0;"><label for="cardName">Name on Card *</label><input type="text" id="cardName" placeholder="John Smith" /></div>
+                <div class="form-group" style="margin-bottom:0;"><label for="cardExpiry">Expiry *</label><input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" /></div>
+                <div class="form-group" style="margin-bottom:0;"><label for="cardCvc">CVV *</label><input type="text" id="cardCvc" placeholder="123" maxlength="4" /></div>
+              </div>
+            </div>
+            <div id="paypalNotice" style="display:none;font-size:14px;color:var(--text-mid);padding:12px;background:var(--white);border:1px solid var(--border-light);">
+              <i class="fab fa-paypal" style="color:#003087;margin-right:6px;"></i>You'll be redirected to PayPal to complete payment securely after clicking Register &amp; Pay.
+            </div>
+            <div id="bankNotice" style="display:none;font-size:14px;color:var(--text-mid);padding:12px;background:var(--white);border:1px solid var(--border-light);">
+              <i class="fa fa-building-columns" style="color:var(--red);margin-right:6px;"></i>Bank transfer details will be emailed to you. Your place is reserved for 48 hours.
+            </div>
             <div class="total-row">
               <span class="total-label">Total Due</span>
               <span class="total-amount" id="totalAmount"></span>
             </div>
           </div>
-
-          <!-- Error banner -->
-          <div id="payErrorBox" style="display:none;background:#fdf0ef;border:1px solid #e74c3c;border-left:4px solid #e74c3c;color:#c0392b;padding:13px 16px;font-size:14px;margin-bottom:18px;gap:10px;align-items:center;">
-            <i class="fa fa-circle-exclamation" style="font-size:18px;flex-shrink:0;"></i>
-            <span id="payErrorMsg"></span>
-          </div>
-
           <button class="btn-register" onclick="handleRegisterPay()">
-            <i class="fa fa-lock" style="margin-right:10px;"></i>Proceed to Secure Payment
+            <i class="fa fa-lock" style="margin-right:10px;"></i>Register &amp; Pay Securely
           </button>
-          <p class="secure-note"><i class="fa fa-shield-halved"></i>Powered by Stripe &nbsp;&bull;&nbsp; 256-bit SSL &nbsp;&bull;&nbsp; Your data is protected</p>
+          <p class="secure-note"><i class="fa fa-shield-halved"></i>256-bit SSL encryption &bull; Your data is protected</p>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- JS — courses must load before booking -->
-  <script src="js/courses.js"></script>
-  <script src="js/booking.js"></script>
-  <script src="js/main.js"></script>
 
+  <script>
+  'use strict';
+
+  /* ============================================================
+     COURSE DATA — all 16 courses
+  ============================================================ */
+  const COURSES = {
+    'close-protection': {
+      name:'Close Protection', tag:'Course', price:'£995', priceNum:995,
+      desc:'Our Close Protection course is run over 23 days, which includes both security and medical lessons, depending on your requirements. The course can also be tailored to suit any specific needs. By working closely with your organisation, we can conduct an analysis of your situation and provide the best solutions possible for your employees. COURSE SYLLABUS: Unit 1 & 2 Principles & working as a Close protection officer',
+      
+      features:['Roles and Responsibilities','Legislation of a CP Operative','Threat Assesment','Risk Management','Personal & Professional Skills','Enhanced Surveillance package','Search Procedures','Foot Drills','Venue Security','Route Planning','Reconnaissance','Transport Management','Planning & Operating Units 3,4,5 & 6','Cnflict Management within the Private Security Industry','Principles of Terror Threat Awareness in the Private Security Industry','Door Supervision responsibilities for Close Protection Operatives','Physical Intervention within the private security industry, including breakaway techniques, restraint procedures, and legal use of force'],
+      dates:[{label:'Jan 12 – 20',duration:'9 days',spots:'6 places left',low:false},{label:'Feb 10 – 18',duration:'9 days',spots:'8 places left',low:false},{label:'Mar 2 – 10',duration:'9 days',spots:'3 places left',low:true}]
+    },
+    'door-supervisor': {
+      name:'Door Supervisor', tag:'Course', price:'£695', priceNum:695,
+      desc:'Our Door Supervisors course can be run over 7 days, which can include both security and medical lessons, depending on your requirements. The course can also be tailored to suit any specific needs. By working closely with your organisation, we can conduct an analysis of your situation and provide the best solutions possible for your employees. The Qualification comprises 4 mandatory Units: ',
+      features:['Unit 1- Working within the Private Security Industry','Unit 2- Working as a Door Supervisor within the Private Security Industry','Unit 3- Conflict Management within the Private Security Industry','Unit 4- Physical Intervention within the Private Security Industry',' First aid at Work/Emergency First aid at Work'],
+      dates:[{label:'Jan 12 – 20',duration:'9 days',spots:'5 places left',low:true},{label:'Feb 10 – 18',duration:'9 days',spots:'8 places left',low:false},{label:'Mar 2 – 10',duration:'9 days',spots:'7 places left',low:false}]
+    },
+    'security-officer': {
+      name:'Security Officer', tag:'Course', price:'£495', priceNum:495,
+      desc:'Our Security Officers course can be run over 6 days, which can include both security and medical lessons, depending on your requirements. The course can also be tailored to suit any specific needs. By working closely with your organisation, we can conduct an analysis of your situation and provide the best solutions possible for your employees This qualification consists of Four units, which learners must complete successfully in order to achieve the qualification, they are: ',
+      features:['Unit 1- Working within the Private Security Industry','Unit 2- Working as a Security Officer within the Private Security Industry','Unit 3- Conflict Management within the Private Security Industry',' First aid at Work/Emergency First aid at Work'],
+      dates:[{label:'Jan 12 – 20',duration:'9 days',spots:'6 places left',low:false},{label:'Feb 10 – 18',duration:'9 days',spots:'4 places left',low:true},{label:'Mar 2 – 10',duration:'9 days',spots:'8 places left',low:false}]
+    },
+    'stewarding': {
+      name:'Stewarding', tag:'Course', price:'£195', priceNum:195,
+      desc:'Stewards are what keep festivals running; helping control crowds, directing attendees to the right location, pointing out ameniities, and creating a happy, vibrant atmosphere. As a festival steward, you might be needed in a multitude of different jobs; from helping people park safely, to giving information and directing attendees around the site.With shifts designed with your enjoyment in mind, stewarding is a fantastic way to see the UKs best while making a difference to everyone who attends.',
+      features:['Spectator Safety Award','Crowd Management','Event Safety Procedures','Emergency Evacuation','Communication Skills','Course Certificate'],
+      dates:[{label:'Jan 12 – 20',duration:'3 days',spots:'10 places left',low:false},{label:'Feb 10 – 18',duration:'3 days',spots:'8 places left',low:false},{label:'Mar 2 – 10',duration:'3 days',spots:'2 places left',low:true}]
+    },
+    'cctv': {
+      name:'CCTV', tag:'Course', price:'£395', priceNum:395,
+      desc:'CCTV operators work in control rooms monitoring images and reporting crime. They are a vital part of the UKs security infrastructure. The SIA CCTV training course is a good course for new entrants or the perfect supplementary qualification for Door Supervisors wishing to take a step up in their career. The CCTV Course is a 3-day training and is assessed by 2 multiple choice exams and a practical assessment. You will attain a Level 2 Qualification In CCTV Operations which will make you eligible for an SIA CCTV License or Public Space Surveillance License. ',
+      features:['SIA CCTV Operator Award','Camera Operation','GDPR & Legal Compliance','Incident Recording','Monitoring Procedures','Course Certificate'],
+      dates:[{label:'Jan 12 – 20',duration:'5 days',spots:'6 places left',low:false},{label:'Feb 10 – 18',duration:'5 days',spots:'8 places left',low:false},{label:'Mar 2 – 10',duration:'5 days',spots:'4 places left',low:false}]
+    },
+    'conflict-management': {
+      name:'Conflict Management', tag:'Course', price:'£195', priceNum:195,
+      desc:'Practical training in de-escalation, communication strategies, and situational awareness. Essential for anyone working in public-facing or security environments.',
+      features:['De-escalation Techniques','Communication Strategies','Situational Awareness','Post-Incident Reporting','Corporate Risk Assessment','24/7 Tutor Access'],
+      dates:[{label:'Jan 12 – 20',duration:'2 days',spots:'8 places left',low:false},{label:'Feb 10 – 18',duration:'2 days',spots:'6 places left',low:false},{label:'Mar 2 – 10',duration:'2 days',spots:'3 places left',low:true}]
+    },
+    'physical-intervention': {
+      name:'Physical Intervention', tag:'Course', price:'£295', priceNum:295,
+      desc:'Covers breakaway techniques, restraint procedures, and the legal use of force. Designed for security professionals who may face physical confrontations in the course of their duties.',
+      features:['Breakaway Techniques','Restraint Procedures','Legal Use of Force','Personal Safety','Scenario-Based Training','24/7 Tutor Support'],
+      dates:[{label:'Jan 12 – 20',duration:'2 days',spots:'6 places left',low:false},{label:'Feb 10 – 18',duration:'2 days',spots:'4 places left',low:true},{label:'Mar 2 – 10',duration:'2 days',spots:'8 places left',low:false}]
+    },
+    'fire-safety': {
+      name:'Fire Safety', tag:'Course', price:'£175', priceNum:175,
+      desc:'Covers fire risk awareness, correct use of extinguishers, evacuation procedures, and legislative compliance. Suitable for fire wardens and all workplace staff.',
+      features:['Fire Risk Awareness','Extinguisher Handling','Evacuation Procedures','Legislative Compliance','Warden Responsibilities','Course Certificate'],
+      dates:[{label:'Jan 12 – 20',duration:'1 day',spots:'12 places left',low:false},{label:'Feb 10 – 18',duration:'1 day',spots:'10 places left',low:false},{label:'Mar 2 – 10',duration:'1 day',spots:'5 places left',low:false}]
+    },
+    'first-aid-at-work': {
+      name:'First Aid at Work', tag:'Course', price:'£295', priceNum:295,
+      desc:'HSE-regulated three-day First Aid at Work qualification. Covers CPR, AED use, wound and fracture care, and a wide range of medical emergencies.',
+      features:['HSE Regulated FAW','CPR & AED Use','Wound & Fracture Care','Medical Emergencies','Practical Scenarios','Course Certificate'],
+      dates:[{label:'Jan 12 – 20',duration:'3 days',spots:'8 places left',low:false},{label:'Feb 10 – 18',duration:'3 days',spots:'6 places left',low:false},{label:'Mar 2 – 10',duration:'3 days',spots:'4 places left',low:false}]
+    },
+    'frec3': {
+      name:'FREC 3', tag:'Course', price:'£595', priceNum:595,
+      desc:'First Response Emergency Care Level 3 — pre-hospital emergency care qualification covering airway management, trauma assessment, and patient monitoring.',
+      features:['Pre-hospital Emergency Care','Airway Management','Trauma Assessment','Patient Monitoring','Practical Scenarios','Course Certificate'],
+      dates:[{label:'Jan 12 – 20',duration:'5 days',spots:'6 places left',low:false},{label:'Feb 10 – 18',duration:'5 days',spots:'4 places left',low:true},{label:'Mar 2 – 10',duration:'5 days',spots:'8 places left',low:false}]
+    },
+    'efaw': {
+      name:'EFAW', tag:'Course', price:'£125', priceNum:125,
+      desc:'Emergency First Aid at Work — one day HSE-regulated course covering CPR, AED basics, choking, bleeding, shock, and burns. Ideal for workplace first aiders.',
+      features:['Emergency First Aid','CPR & AED Basics','Choking & Bleeding','Shock & Burns','Practical Scenarios','Course Certificate'],
+      dates:[{label:'Jan 12 – 20',duration:'1 day',spots:'12 places left',low:false},{label:'Feb 10 – 18',duration:'1 day',spots:'10 places left',low:false},{label:'Mar 2 – 10',duration:'1 day',spots:'6 places left',low:false}]
+    },
+    'mental-health': {
+      name:'Mental Health', tag:'Course', price:'£195', priceNum:195,
+      desc:'Mental Health First Aid training — covering crisis identification, de-escalation support, and how to signpost individuals to appropriate resources. Vital for security professionals.',
+      features:['Mental Health First Aid','Crisis Identification','De-escalation Support','Signposting Resources','Practical Scenarios','24/7 Tutor Access'],
+      dates:[{label:'Jan 12 – 20',duration:'2 days',spots:'8 places left',low:false},{label:'Feb 10 – 18',duration:'2 days',spots:'6 places left',low:false},{label:'Mar 2 – 10',duration:'2 days',spots:'3 places left',low:true}]
+    },
+    'cp-refresher': {
+      name:'Close Protection (Refresher)', tag:'Refresher', price:'£395', priceNum:395,
+      desc:'This qualification is designed for anyone who needs to renew their CP licence. Your last CP licence must not have expired more than 3 years ago at the time of completing the course. You must hold a minimum of a level 3 Award in First Aid at Work which will not expire within the next 12 months. If you require a First Aid/FREC 3 Certificate we can assist with this.',
+      features:['Principles of Terror Threat Awareness in the Private Security Industry.','Principles Of Working as a Door Supervisor for Close Protection Operatives.','','Application of physical intervention skills in the private security industry.'],
+      dates:[{label:'Jan 12 – 20',duration:'3 days',spots:'4 places left',low:true},{label:'Feb 10 – 18',duration:'3 days',spots:'6 places left',low:false},{label:'Mar 2 – 10',duration:'3 days',spots:'5 places left',low:false}]
+    },
+    'efaw-refresher': {
+      name:'EFAW (Refresher)', tag:'Refresher', price:'£75', priceNum:75,
+      desc:'Annual refresher for EFAW certificate holders. Keeps CPR and AED skills current with the latest Resuscitation Council guidelines.',
+      features:['CPR Skills Update','AED Practical Review','Updated Guidelines','Scenario Practice','Certificate Renewal','Half Day Course'],
+      dates:[{label:'Jan 12 – 20',duration:'Half day',spots:'12 places left',low:false},{label:'Feb 10 – 18',duration:'Half day',spots:'10 places left',low:false},{label:'Mar 2 – 10',duration:'Half day',spots:'8 places left',low:false}]
+    },
+    'so-refresher': {
+      name:'Security Officer (Refresher)', tag:'Refresher', price:'£195', priceNum:195,
+      desc:'SIA licence renewal for qualified Security Guards. Updated patrol procedures, legislation changes, and practical guarding skills review.',
+      features:['SIA Licence Renewal','Updated Patrol Skills','Guarding Review','One-on-One Support','Legislation Update','24/7 Tutor Support'],
+      dates:[{label:'Jan 12 – 20',duration:'2 days',spots:'6 places left',low:false},{label:'Feb 10 – 18',duration:'2 days',spots:'4 places left',low:false},{label:'Mar 2 – 10',duration:'2 days',spots:'3 places left',low:true}]
+    },
+    'ds-refresher': {
+      name:'Door Supervisor (Refresher)', tag:'Refresher', price:'£295', priceNum:295,
+      desc:'SIA licence renewal for qualified Door Supervisors. Covers physical intervention updates, conflict management review, and the latest legislative changes.',
+      features:['SIA Licence Renewal','Physical Intervention Update','Conflict Management Review','Legislation Changes','Scenario-Based Training','Course Certificate'],
+      dates:[{label:'Jan 12 – 20',duration:'2 days',spots:'5 places left',low:false},{label:'Feb 10 – 18',duration:'2 days',spots:'7 places left',low:false},{label:'Mar 2 – 10',duration:'2 days',spots:'2 places left',low:true}]
+    }
+  };
+
+  const LOCATION = 'Dunfermline, Scotland';
+
+  let activeCourse = null;
+  let activeDate   = null;
+
+  function openCourseModal(key) {
+    activeCourse = COURSES[key];
+    if (!activeCourse) return;
+    document.getElementById('mTag').textContent  = activeCourse.tag;
+    document.getElementById('mName').textContent = activeCourse.name;
+    document.getElementById('mDesc').textContent = activeCourse.desc;
+    document.getElementById('mFeatures').innerHTML = activeCourse.features
+      .map(f => `<div class="modal-feat"><i class="fa fa-check"></i>${f}</div>`).join('');
+    document.getElementById('mDates').innerHTML = activeCourse.dates.map((d,i) => `
+      <div class="date-row">
+        <div class="date-row-info">
+          <div class="date-row-icon"><i class="fa fa-calendar"></i></div>
+          <div>
+            <div class="date-label">${d.label}, 2026</div>
+            <div class="date-meta">${d.duration} &bull; ${LOCATION}</div>
+          </div>
+        </div>
+        <span class="date-spots${d.low?' low':''}">${d.spots}</span>
+        <button class="btn-book" onclick="selectDate(${i})">Book Now</button>
+      </div>`).join('');
+    goToStep(1);
+    document.getElementById('courseModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function selectDate(i) {
+    activeDate = activeCourse.dates[i];
+    document.getElementById('bsCourse').textContent  = activeCourse.name;
+    document.getElementById('bsDate').textContent    = activeDate.label + ', 2026 \u2022 ' + activeDate.duration;
+    document.getElementById('bsPrice').textContent   = activeCourse.price;
+    document.getElementById('totalAmount').textContent = activeCourse.price;
+    document.getElementById('regSubtitle').textContent = activeCourse.name + ' \u2014 ' + activeDate.label + ', 2026';
+    goToStep(2);
+  }
+
+  function goToStep(n) {
+    document.getElementById('step1').classList.toggle('active', n===1);
+    document.getElementById('step2').classList.toggle('active', n===2);
+    document.getElementById('modalSuccess').classList.remove('active');
+    document.querySelector('.modal-box').scrollTop = 0;
+  }
+
+  function closeModal() {
+    document.getElementById('courseModal').classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { goToStep(1); document.getElementById('modalSuccess').classList.remove('active'); }, 300);
+  }
+
+  function selectPayMethod(el) {
+    document.querySelectorAll('.pay-method').forEach(m => m.classList.remove('selected'));
+    el.classList.add('selected');
+    const m = el.dataset.method;
+    document.getElementById('cardFields').style.display   = m==='card'   ? 'block' : 'none';
+    document.getElementById('paypalNotice').style.display = m==='paypal' ? 'block' : 'none';
+    document.getElementById('bankNotice').style.display   = m==='bank'   ? 'block' : 'none';
+  }
+
+  function handleRegisterPay() {
+    const required = ['regFirst','regLast','regEmail','regPhone'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) { el.classList.add('field-error'); valid=false; }
+      else el.classList.remove('field-error');
+    });
+    const method = document.querySelector('.pay-method.selected').dataset.method;
+    if (method === 'card') {
+      ['cardNumber','cardName','cardExpiry','cardCvc'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) { el.classList.add('field-error'); valid=false; }
+        else el.classList.remove('field-error');
+      });
+    }
+    if (!valid) return;
+    /*
+      ── PAYMENT GATEWAY HOOK ──
+      Stripe:  stripe.redirectToCheckout({ sessionId })
+      PayPal:  window.location.href = paypal_url
+      SagePay: form.submit()
+      Remove the lines below and replace with your gateway call.
+    */
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('modalSuccess').classList.add('active');
+    document.querySelector('.modal-box').scrollTop = 0;
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalBack').addEventListener('click', () => goToStep(1));
+  document.getElementById('courseModal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && document.getElementById('courseModal').classList.contains('open')) closeModal(); });
+
+  /* Card number format */
+  const cn = document.getElementById('cardNumber');
+  if(cn) cn.addEventListener('input', function(){ this.value=this.value.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim().substring(0,19); });
+  const ce = document.getElementById('cardExpiry');
+  if(ce) ce.addEventListener('input', function(){ this.value=this.value.replace(/\D/g,'').replace(/^(\d{2})(\d)/,'$1/$2').substring(0,5); });
+
+  /* ---- Standard JS ---- */
+  const navToggle = document.getElementById('navToggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  navToggle.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+    mobileNav.setAttribute('aria-hidden', !open);
+    const s = navToggle.querySelectorAll('span');
+    s[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
+    s[1].style.opacity   = open ? '0' : '';
+    s[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+    mobileNav.setAttribute('aria-hidden','true');
+    navToggle.querySelectorAll('span').forEach(s => s.removeAttribute('style'));
+  }));
+
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+  const counters = document.querySelectorAll('[data-target]');
+  let ran = false;
+  const cntObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting && !ran){
+        ran = true;
+        counters.forEach(el => {
+          const target = parseInt(el.dataset.target, 10);
+          const start = performance.now(); const dur = 1800;
+          (function step(now){ const p=Math.min((now-start)/dur,1); const ease=1-Math.pow(1-p,3); el.textContent=Math.round(ease*target); if(p<1) requestAnimationFrame(step); })(start);
+        });
+      }
+    });
+  }, {threshold:0.4});
+  if(counters.length) cntObs.observe(counters[0].closest('section') || counters[0]);
+
+  const cForm = document.getElementById('contactForm');
+  const cToast = document.getElementById('form-toast');
+  cForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const req = cForm.querySelectorAll('[required]');
+    let ok = true;
+    req.forEach(f => { if(!f.value.trim()){ f.style.borderColor='#e74c3c'; ok=false; } else f.style.borderColor=''; });
+    if(!ok) return;
+    cToast.style.display = 'block';
+    cForm.reset();
+    setTimeout(() => cToast.style.display='none', 5000);
+  });
+
+  const arrow = document.getElementById('heroScroll');
+  if(arrow) {
+    arrow.addEventListener('click', e => {
+      e.preventDefault();
+      const dest = document.getElementById('services-strip');
+      if(!dest) return;
+      const offset = document.getElementById('navbar').offsetHeight;
+      window.scrollTo({top: dest.getBoundingClientRect().top + window.scrollY - offset, behavior:'smooth'});
+    });
+  }
+
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+  </script>
+
+<script src="/js/courses.js"></script>
+<script src="/js/booking.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>
