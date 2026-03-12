@@ -247,7 +247,7 @@ const COURSES = {
   },
 
   'fire-safety-marshall': {
-    name: 'Fire Safety Marshall', tag: 'Course', price: '£110', priceNum: 110,
+    name: 'Fire Safety Marshall', tag: 'Course', price: '£60', priceNum: 60,
     desc: 'Our Fire Safety Marshall course is designed to provide comprehensive training on fire safety procedures and protocols.',
     features: [
       'Fire Risk Assessment', 'Fire Wardrobe Procedures', 'Fire Drill Procedures', 'Fire Safety Certificate'
