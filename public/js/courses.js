@@ -121,7 +121,7 @@ const COURSES = {
 
   'personal-safety-awareness': {
     name: 'Personal Safety Awareness', tag: 'Course', price: '£30', priceNum: 30,
-    desc: 'Covers personal safety risk awareness, correct use of safety equipment, emergency procedures, and legislative compliance. Suitable for all workplace staff.',
+    desc: 'Situational awareness is being aware of what is happening around you and recognising whether there could be a threat to your safety or security.  Well-honed situational awareness skills help you to recognise the early signs of a threat and enable you to react and respond quickly to potential danger. At times, when we have lots of things going on around us, we may fail to notice signs that a situation is changing and becoming more volatile. Sometimes these signs may be very hard to pick up on and, even if we don’t spot something, it doesn’t mean it’s not happening. When we are in noisy and busy environments, such as reception areas or public transport, we can become absorbed in our own thoughts and fail to see and hear signs of a threat.',
     features: [
       'Personal Safety Risk Awareness', 'Safety Equipment Handling', 'Emergency Procedures',
       'Legislative Compliance', 'Employee Responsibilities', 'Course Certificate'
@@ -260,9 +260,9 @@ const COURSES = {
   },
   'gap-year-safety-awareness': {
     name: 'Gap Year Safety Awareness', tag: 'Course', price: '£100', priceNum: 100,
-    desc: 'Our Gap Year Safety Awareness course is designed to provide comprehensive training on safety procedures and protocols for young adults.',
+    desc: 'This is a two-day safety training courses, provides young travellers with security and safety advice, knowledge and skills to recognise, avoid or deal with any risk or danger they may face when travelling on their own. We will explain how to evaluate situations, avoid trouble and give them the confidence to make decisions that will enable them to make the most out of their time exploring different areas of the world.',
     features: [
-      'Risk Assessment', 'Safety Procedures', 'Emergency Response', 'Safety Certificate'
+      'Personal Security', 'Accommodation Security', 'what to take', 'first aid', 'staying fit and healthy', 'what to do in an emergency', 'how to stay in touch', 'Transport safety', 'cultural issues', 'drugs and alcohol', 'Conflict Management', 'Navigation'
     ],
     dates: [
       { label: 'June 15 – July 8', duration: '1 day', spots: '8 places left', low: false }
