@@ -240,7 +240,7 @@ exports.handler = async (event) => {
 
   // Determine site URL (works locally + on Netlify)
   const siteUrl = process.env.URL ||
-                  process.env.DEPLOY_URL ||
+                  process.env.DEPLOY_URI ||
                   'http://localhost:8888';
 
   try {
