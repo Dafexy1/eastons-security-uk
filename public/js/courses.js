@@ -265,7 +265,7 @@ const COURSES = {
       'Personal Security', 'Accommodation Security', 'what to take', 'first aid', 'staying fit and healthy', 'what to do in an emergency', 'how to stay in touch', 'Transport safety', 'cultural issues', 'drugs and alcohol', 'Conflict Management', 'Navigation'
     ],
     dates: [
-      { label: 'June 15 – July 8', duration: '1 day', spots: '8 places left', low: false }
+      { label: 'July 10 – July 11', duration: '1 day', spots: '8 places left', low: false }
     ]
   }
 
