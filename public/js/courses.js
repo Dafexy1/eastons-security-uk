@@ -128,7 +128,7 @@ const COURSES = {
     ],
     dates: [
       { label: 'April 18', duration: '1 day', spots: '10 places left', low: false },
-       { label: 'June 28', duration: '1 day', spots: '10 places left', low: false },
+       { label: 'July 25', duration: '1 day', spots: '10 places left', low: false },
       // { label: 'Mar 2 – 10',  duration: '1 day', spots: '5 places left',  low: false }
     ]
   },
@@ -200,6 +200,22 @@ const COURSES = {
     dates: [
       { label: 'Mar 20 – 22', duration: '3 days', spots: '5 places left', low: true  },
       { label: 'May 15 – 17', duration: '3 days', spots: '6 places left', low: false },
+      // { label: 'Mar 2 – 10',  duration: '3 days', spots: '5 places left', low: false }
+    ]
+  },
+
+   'hostile-environment-training': {
+    name: 'Hostile Environment Training', tag: 'Course', price: '£360', priceNum: 360,
+    desc: 'Wherever in the world staff are required to live or work employers have a duty of care to ensure they are fully prepared for any challenges they may face. Our HET course can be run over one or two days, which can include both security and medical lessons, depending on your requirements. The course can also be tailored to suit any specific needs. By working closely with your organisation, we can conduct an analysis of your situation and provide the best solutions possible for your employees.',
+    features: [
+      'Civil Disturbances and Riots',
+      'Kidnap and Abduction',
+      'Convoys',
+      'Emergency ‘Grab’ Bags and First Aid Kits',
+      'Sexual Violence'
+    ],
+    dates: [
+      { label: 'Coming Soon', duration: '10 days', spots: '', low: true  },
       // { label: 'Mar 2 – 10',  duration: '3 days', spots: '5 places left', low: false }
     ]
   },
