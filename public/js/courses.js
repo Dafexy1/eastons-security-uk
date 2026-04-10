@@ -42,8 +42,9 @@ const COURSES = {
     dates: [
      // { label: 'April 6 – 12', duration: '7 days', spots: '8 places left', low: true  },
       { label: 'May 4 – 10', duration: '7 days', spots: '8 places left', low: false },
-      { label: 'May 18 – 24',  duration: '7 days', spots: '9 places left', low: false },
-      { label: 'July 13 – 19',  duration: '7 days', spots: '9 places left', low: false }
+      { label: 'July 13 – 19',  duration: '7 days', spots: '9 places left', low: false },
+      { label: 'August 3 – 9',  duration: '7 days', spots: '9 places left', low: false },
+      { label: 'November 9 – 15',  duration: '7 days', spots: '9 places left', low: false }
     ]
   },
 
