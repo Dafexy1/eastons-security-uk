@@ -44,6 +44,7 @@ const COURSES = {
       { label: 'May 4 – 10', duration: '7 days', spots: '8 places left', low: false },
       { label: 'July 13 – 19',  duration: '7 days', spots: '9 places left', low: false },
       { label: 'August 3 – 9',  duration: '7 days', spots: '9 places left', low: false },
+      { label: 'October 19 – 25',  duration: '7 days', spots: '9 places left', low: false },
       { label: 'November 9 – 15',  duration: '7 days', spots: '9 places left', low: false }
     ]
   },
@@ -72,7 +73,7 @@ const COURSES = {
       'Emergency Evacuation', 'Communication Skills', 'Course Certificate'
     ],
     dates: [
-      { label: 'April 20 – 22', duration: '3 days', spots: '10 places left', low: false },
+     // { label: 'April 20 – 22', duration: '3 days', spots: '10 places left', low: false },
       { label: 'June 5 – 7', duration: '3 days', spots: '8 places left',  low: false },
       // { label: 'Mar 2 – 10',  duration: '3 days', spots: '2 places left',  low: true  }
     ]
@@ -86,9 +87,9 @@ const COURSES = {
       'Incident Recording', 'Monitoring Procedures', 'Course Certificate'
     ],
     dates: [
-      { label: 'Apr 27 – 29', duration: '3 days', spots: '6 places left', low: false },
-      { label: 'July 20 – 22', duration: '3 days', spots: '8 places left', low: false }
-      // { label: 'Mar 2 – 10',  duration: '5 days', spots: '4 places left', low: false }
+   
+      { label: 'July 20 – 22', duration: '3 days', spots: '8 places left', low: false },
+       { label: 'Sept 11 – 13',  duration: '3 days', spots: '8 places left', low: false }
     ]
   },
 
@@ -121,14 +122,14 @@ const COURSES = {
   },
 
   'personal-safety-awareness': {
-    name: 'Personal Safety Awareness', tag: 'Course', price: '£30', priceNum: 30,
+    name: 'Personal Safety Awareness', tag: 'Course', price: '£20', priceNum: 20,
     desc: 'Situational awareness is being aware of what is happening around you and recognising whether there could be a threat to your safety or security.  Well-honed situational awareness skills help you to recognise the early signs of a threat and enable you to react and respond quickly to potential danger. At times, when we have lots of things going on around us, we may fail to notice signs that a situation is changing and becoming more volatile. Sometimes these signs may be very hard to pick up on and, even if we don’t spot something, it doesn’t mean it’s not happening. When we are in noisy and busy environments, such as reception areas or public transport, we can become absorbed in our own thoughts and fail to see and hear signs of a threat.',
     features: [
       'Personal Safety Risk Awareness', 'Safety Equipment Handling', 'Emergency Procedures',
       'Legislative Compliance', 'Employee Responsibilities', 'Course Certificate'
     ],
     dates: [
-      { label: 'April 18', duration: '1 day', spots: '10 places left', low: false },
+  
        { label: 'July 25', duration: '1 day', spots: '10 places left', low: false },
       // { label: 'Mar 2 – 10',  duration: '1 day', spots: '5 places left',  low: false }
     ]
@@ -157,7 +158,7 @@ const COURSES = {
     ],
     dates: [
       { label: 'June 15 – 19', duration: '5 days', spots: '6 places left', low: false },
-      // { label: 'Feb 10 – 18', duration: '5 days', spots: '4 places left', low: true  },
+      { label: 'Aug 31 – 4 Sept', duration: '5 days', spots: '5 places left', low: true  },
       // { label: 'Mar 2 – 10',  duration: '5 days', spots: '8 places left', low: false }
     ]
   },
@@ -199,9 +200,9 @@ const COURSES = {
       'Application of Physical Intervention Skills'
     ],
     dates: [
-      { label: 'Mar 20 – 22', duration: '3 days', spots: '5 places left', low: true  },
+     //  { label: 'Mar 20 – 22', duration: '3 days', spots: '5 places left', low: true  },
       { label: 'May 15 – 17', duration: '3 days', spots: '6 places left', low: false },
-      // { label: 'Mar 2 – 10',  duration: '3 days', spots: '5 places left', low: false }
+      { label: 'Sept 4 – 6',  duration: '3 days', spots: '5 places left', low: false }
     ]
   },
 
@@ -243,9 +244,9 @@ const COURSES = {
       'One-on-One Support', 'Legislation Update', '24/7 Tutor Support'
     ],
     dates: [
-      { label: 'Mar 26 – 27', duration: '2 days', spots: '6 places left', low: false },
-      { label: 'Apr 4 – 5', duration: '2 days', spots: '6 places left', low: false }
-      // { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true  }
+      // { label: 'Mar 26 – 27', duration: '2 days', spots: '6 places left', low: false },
+      { label: 'June 3 – 4', duration: '2 days', spots: '6 places left', low: false },
+      { label: 'Aug 17 – 18',  duration: '2 days', spots: '3 places left', low: true  }
     ]
   },
 
@@ -257,9 +258,11 @@ const COURSES = {
       'Legislation Changes', 'Scenario-Based Training', 'Course Certificate'
     ],
     dates: [
-      { label: 'Mar 16 – 18', duration: '3 days', spots: '6 places left', low: false },
+      // { label: 'Mar 16 – 18', duration: '3 days', spots: '6 places left', low: false },
       { label: 'May 29 – 31', duration: '3 days', spots: '7 places left', low: false },
-      { label: 'Jun 8 – 10',  duration: '3 days', spots: '7 places left', low: true  }
+      { label: 'Jun 8 – 10',  duration: '3 days', spots: '7 places left', low: true  },
+      { label: 'July 24 – 26',  duration: '3 days', spots: '7 places left', low: true  },
+       { label: 'Oct 9 – 11',  duration: '3 days', spots: '7 places left', low: true  }
     ]
   },
 
