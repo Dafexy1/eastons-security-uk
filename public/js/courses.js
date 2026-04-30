@@ -130,8 +130,8 @@ const COURSES = {
     ],
     dates: [
   
-       { label: 'July 25', duration: '1 day', spots: '10 places left', low: false },
-      // { label: 'Mar 2 – 10',  duration: '1 day', spots: '5 places left',  low: false }
+       { label: 'July 25', duration: '1 day', spots: '6 places left', low: false },
+       { label: 'Oct 18',  duration: '1 day', spots: '6 places left',  low: false }
     ]
   },
 
@@ -245,8 +245,8 @@ const COURSES = {
     ],
     dates: [
       // { label: 'Mar 26 – 27', duration: '2 days', spots: '6 places left', low: false },
-      { label: 'June 3 – 4', duration: '2 days', spots: '6 places left', low: false },
-      { label: 'Aug 17 – 18',  duration: '2 days', spots: '3 places left', low: true  }
+      { label: 'June 3 – 4', duration: '2 days', spots: '12 places left', low: false },
+      { label: 'Aug 17 – 18',  duration: '2 days', spots: '12 places left', low: true  }
     ]
   },
 
@@ -259,10 +259,10 @@ const COURSES = {
     ],
     dates: [
       // { label: 'Mar 16 – 18', duration: '3 days', spots: '6 places left', low: false },
-      { label: 'May 29 – 31', duration: '3 days', spots: '7 places left', low: false },
-      { label: 'Jun 8 – 10',  duration: '3 days', spots: '7 places left', low: true  },
-      { label: 'July 24 – 26',  duration: '3 days', spots: '7 places left', low: true  },
-       { label: 'Oct 9 – 11',  duration: '3 days', spots: '7 places left', low: true  }
+      { label: 'May 29 – 31', duration: '3 days', spots: '12 places left', low: false },
+      { label: 'Jun 8 – 10',  duration: '3 days', spots: '12 places left', low: true  },
+      { label: 'July 24 – 26',  duration: '3 days', spots: '12 places left', low: true  },
+       { label: 'Oct 9 – 11',  duration: '3 days', spots: '12 places left', low: true  }
     ]
   },
 
