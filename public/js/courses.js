@@ -23,7 +23,8 @@ const COURSES = {
       'Physical Intervention within the private security industry'
     ],
     dates: [
-      { label: 'June 15 – July 8', duration: '23 days',  spots: '8 places left', low: false },
+       { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+      // { label: 'June 15 – July 8', duration: '23 days',  spots: '8 places left', low: false },
       // { label: 'Feb 10 – 18', duration: '9 days',  spots: '8 places left', low: false },
       // { label: 'Mar 2 – 10',  duration: '9 days',  spots: '3 places left', low: true  }
     ]
