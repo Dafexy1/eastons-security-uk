@@ -158,7 +158,7 @@ const COURSES = {
       'Patient Monitoring', 'Practical Scenarios', 'Course Certificate'
     ],
     dates: [
-      { label: 'June 15 – 19', duration: '5 days', spots: '6 places left', low: false },
+     // { label: 'June 15 – 19', duration: '5 days', spots: '6 places left', low: false },
       { label: 'Aug 31 – 4 Sept', duration: '5 days', spots: '5 places left', low: true  },
       // { label: 'Mar 2 – 10',  duration: '5 days', spots: '8 places left', low: false }
     ]
