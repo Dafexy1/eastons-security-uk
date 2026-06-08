@@ -61,7 +61,7 @@ function openCourseModal(key) {
       <div class="date-row-info">
         <div class="date-row-icon"><i class="fa fa-calendar"></i></div>
         <div>
-          <div class="date-label">${d.label}, 2026</div>
+          <div class="date-label">${d.label}, ${d.year || 2026}</div>
           <div class="date-meta">${d.duration} &bull; ${LOCATION}</div>
         </div>
       </div>
@@ -80,10 +80,10 @@ function openCourseModal(key) {
 function selectDate(i) {
   activeDate = activeCourse.dates[i];
   document.getElementById('bsCourse').textContent    = activeCourse.name;
-  document.getElementById('bsDate').textContent      = `${activeDate.label}, 2026 \u2022 ${activeDate.duration}`;
+  document.getElementById('bsDate').textContent      = `${activeDate.label}, ${activeDate.year || 2026} \u2022 ${activeDate.duration}`;
   document.getElementById('bsPrice').textContent     = activeCourse.price;
   document.getElementById('totalAmount').textContent = activeCourse.price;
-  document.getElementById('regSubtitle').textContent = `${activeCourse.name} \u2014 ${activeDate.label}, 2026`;
+  document.getElementById('regSubtitle').textContent = `${activeCourse.name} \u2014 ${activeDate.label}, ${activeDate.year || 2026}`;
   hidePayError();
   showScreen('step2');
 }
@@ -146,7 +146,7 @@ async function handleRegisterPay() {
     courseKey,
     course   : activeCourse.name,
     price    : activeCourse.priceNum,
-    date     : `${activeDate.label}, 2026`,
+    date     : `${activeDate.label}, ${activeDate.year || 2026}`,
     duration : activeDate.duration,
     location : LOCATION,
     customer : {

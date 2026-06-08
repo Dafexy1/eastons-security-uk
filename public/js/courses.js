@@ -23,10 +23,10 @@ const COURSES = {
       'Physical Intervention within the private security industry'
     ],
     dates: [
-       { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
-      // { label: 'June 15 – July 8', duration: '23 days',  spots: '8 places left', low: false },
-      // { label: 'Feb 10 – 18', duration: '9 days',  spots: '8 places left', low: false },
-      // { label: 'Mar 2 – 10',  duration: '9 days',  spots: '3 places left', low: true  }
+      // { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+       { label: 'September 21 – October 14', duration: '23 days',  spots: '12 places left', low: false },
+      // { label: 'February 10 – 18', duration: '9 days',  spots: '8 places left', low: false },
+      // { label: 'March 2 – 10',  duration: '9 days',  spots: '3 places left', low: true  }
     ]
   },
 
@@ -42,11 +42,14 @@ const COURSES = {
     ],
     dates: [
      // { label: 'April 6 – 12', duration: '7 days', spots: '8 places left', low: true  },
-      { label: 'May 4 – 10', duration: '7 days', spots: '8 places left', low: false },
-      { label: 'July 13 – 19',  duration: '7 days', spots: '9 places left', low: false },
-      { label: 'August 3 – 9',  duration: '7 days', spots: '9 places left', low: false },
-      { label: 'October 19 – 25',  duration: '7 days', spots: '9 places left', low: false },
-      { label: 'November 9 – 15',  duration: '7 days', spots: '9 places left', low: false }
+     // { label: 'May 4 – 10', duration: '7 days', spots: '12 places left', low: false },
+      { label: 'July 13 – 19',  duration: '7 days', spots: '12 places left', low: false },
+      { label: 'August 3 – 9',  duration: '7 days', spots: '12 places left', low: false },
+      { label: 'October 19 – 25',  duration: '7 days', spots: '12 places left', low: false },
+      { label: 'November 23 – 29',  duration: '7 days', spots: '12 places left', low: false },
+       { label: 'January 11 – 17',  duration: '7 days', spots: '12 places left', low: false, year: 2027},
+      { label: 'February 8 – 14',  duration: '7 days', spots: '12 places left', low: false, year: 2027 },
+      { label: 'March 22 – 28',  duration: '7 days', spots: '12 places left', low: false, year: 2027 },
     ]
   },
 
@@ -60,9 +63,10 @@ const COURSES = {
       'First Aid at Work / Emergency First Aid at Work'
     ],
     dates: [
-      { label: 'Jan 12 – 20', duration: '9 days', spots: '6 places left', low: false },
-      { label: 'Feb 10 – 18', duration: '9 days', spots: '4 places left', low: true  },
-      { label: 'Mar 2 – 10',  duration: '9 days', spots: '8 places left', low: false }
+        { label: 'Coming Soon', duration: '9 days', spots: '', low: true  },
+      // { label: 'Jan 12 – 20', duration: '9 days', spots: '12 places left', low: false },
+      // { label: 'Feb 10 – 18', duration: '9 days', spots: '12 places left', low: true  },
+      // { label: 'Mar 2 – 10',  duration: '9 days', spots: '12 places left', low: false }
     ]
   },
 
@@ -75,7 +79,7 @@ const COURSES = {
     ],
     dates: [
      // { label: 'April 20 – 22', duration: '3 days', spots: '10 places left', low: false },
-      { label: 'June 5 – 7', duration: '3 days', spots: '8 places left',  low: false },
+      { label: 'June 5 – 7', duration: '3 days', spots: '12 places left',  low: false },
       // { label: 'Mar 2 – 10',  duration: '3 days', spots: '2 places left',  low: true  }
     ]
   },
@@ -89,8 +93,8 @@ const COURSES = {
     ],
     dates: [
    
-      { label: 'July 20 – 22', duration: '3 days', spots: '8 places left', low: false },
-       { label: 'Sept 11 – 13',  duration: '3 days', spots: '8 places left', low: false }
+      // { label: 'July 20 – 22', duration: '3 days', spots: '12 places left', low: false },
+       { label: 'September 11 – 13',  duration: '3 days', spots: '12 places left', low: false }
     ]
   },
 
@@ -102,9 +106,10 @@ const COURSES = {
       'Post-Incident Reporting', 'Corporate Risk Assessment', '24/7 Tutor Access'
     ],
     dates: [
-      { label: 'Jan 12 – 20', duration: '2 days', spots: '8 places left', low: false },
-      { label: 'Feb 10 – 18', duration: '2 days', spots: '6 places left', low: false },
-      { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true  }
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+      // { label: 'Jan 12 – 20', duration: '2 days', spots: '8 places left', low: false },
+      // { label: 'Feb 10 – 18', duration: '2 days', spots: '6 places left', low: false },
+      // { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true  }
     ]
   },
 
@@ -116,9 +121,10 @@ const COURSES = {
       'Personal Safety', 'Scenario-Based Training', '24/7 Tutor Support'
     ],
     dates: [
-      { label: 'Jan 12 – 20', duration: '2 days', spots: '6 places left', low: false },
-      { label: 'Feb 10 – 18', duration: '2 days', spots: '4 places left', low: true  },
-      { label: 'Mar 2 – 10',  duration: '2 days', spots: '8 places left', low: false }
+        { label: 'Coming Soon', duration: '9 days', spots: '', low: true  },
+      // { label: 'Jan 12 – 20', duration: '2 days', spots: '6 places left', low: false },
+      // { label: 'Feb 10 – 18', duration: '2 days', spots: '4 places left', low: true  },
+      // { label: 'Mar 2 – 10',  duration: '2 days', spots: '8 places left', low: false }
     ]
   },
 
@@ -131,8 +137,8 @@ const COURSES = {
     ],
     dates: [
   
-       { label: 'July 25', duration: '1 day', spots: '6 places left', low: false },
-       { label: 'Oct 18',  duration: '1 day', spots: '6 places left',  low: false }
+      // { label: 'July 25', duration: '1 day', spots: '6 places left', low: false },
+       { label: 'October 18',  duration: '1 day', spots: '12 places left',  low: false }
     ]
   },
 
@@ -144,9 +150,10 @@ const COURSES = {
       'Medical Emergencies', 'Practical Scenarios', 'Course Certificate'
     ],
     dates: [
-      { label: 'Jan 12 – 20', duration: '3 days', spots: '8 places left', low: false },
-      { label: 'Feb 10 – 18', duration: '3 days', spots: '6 places left', low: false },
-      { label: 'Mar 2 – 10',  duration: '3 days', spots: '4 places left', low: false }
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+      // { label: 'Jan 12 – 20', duration: '3 days', spots: '8 places left', low: false },
+      // { label: 'Feb 10 – 18', duration: '3 days', spots: '6 places left', low: false },
+      // { label: 'Mar 2 – 10',  duration: '3 days', spots: '4 places left', low: false }
     ]
   },
 
@@ -159,8 +166,11 @@ const COURSES = {
     ],
     dates: [
      // { label: 'June 15 – 19', duration: '5 days', spots: '6 places left', low: false },
-      { label: 'Aug 31 – 4 Sept', duration: '5 days', spots: '5 places left', low: true  },
-      // { label: 'Mar 2 – 10',  duration: '5 days', spots: '8 places left', low: false }
+      { label: 'Aug 31 – 4 Sept', duration: '5 days', spots: '12 places left', low: true  },
+      { label: 'September 21 – 25', duration: '5 days', spots: '12 places left', low: true  },
+      { label: 'January 25 – 29',  duration: '5 days', spots: '12 places left', low: false, year: 2027 },
+        { label: 'March 1 – 5', duration: '5 days', spots: '12 places left', low: true, year: 2027  },
+       { label: 'May 10 – 14',  duration: '5 days', spots: '12 places left', low: false, year: 2027 }
     ]
   },
 
@@ -172,9 +182,10 @@ const COURSES = {
       'Shock & Burns', 'Practical Scenarios', 'Course Certificate'
     ],
     dates: [
-      { label: 'Jan 12 – 20', duration: '1 day', spots: '12 places left', low: false },
-      { label: 'Feb 10 – 18', duration: '1 day', spots: '10 places left', low: false },
-      { label: 'Mar 2 – 10',  duration: '1 day', spots: '6 places left',  low: false }
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+      // { label: 'Jan 12 – 20', duration: '1 day', spots: '12 places left', low: false },
+      // { label: 'Feb 10 – 18', duration: '1 day', spots: '10 places left', low: false },
+      // { label: 'Mar 2 – 10',  duration: '1 day', spots: '6 places left',  low: false }
     ]
   },
 
@@ -186,9 +197,10 @@ const COURSES = {
       'Signposting Resources', 'Practical Scenarios', '24/7 Tutor Access'
     ],
     dates: [
-      { label: 'Jan 12 – 20', duration: '2 days', spots: '8 places left', low: false },
-      { label: 'Feb 10 – 18', duration: '2 days', spots: '6 places left', low: false },
-      { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true  }
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+      // { label: 'Jan 12 – 20', duration: '2 days', spots: '8 places left', low: false },
+      // { label: 'Feb 10 – 18', duration: '2 days', spots: '6 places left', low: false },
+      // { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true  }
     ]
   },
 
@@ -202,8 +214,13 @@ const COURSES = {
     ],
     dates: [
      //  { label: 'Mar 20 – 22', duration: '3 days', spots: '5 places left', low: true  },
-      { label: 'May 15 – 17', duration: '3 days', spots: '6 places left', low: false },
-      { label: 'Sept 4 – 6',  duration: '3 days', spots: '5 places left', low: false }
+     // { label: 'May 15 – 17', duration: '3 days', spots: '6 places left', low: false },
+     { label: 'August 10 – 12',  duration: '3 days', spots: '12 places left', low: false },
+      { label: 'December 4 – 6',  duration: '3 days', spots: '12 places left', low: false },
+      { label: 'February 26 – 28',  duration: '3 days', spots: '12 places left', low: false, year: 2027 },
+      { label: 'April 2 – 4',  duration: '3 days', spots: '12 places left', low: false, year: 2027 },
+      { label: 'June 4 – 6',  duration: '3 days', spots: '12 places left', low: false, year: 2027 },
+       // { label: 'Sept 4 – 6',  duration: '3 days', spots: '5 places left', low: false }
     ]
   },
 
@@ -231,9 +248,10 @@ const COURSES = {
       'Scenario Practice', 'Certificate Renewal', 'Half Day Course'
     ],
     dates: [
-      { label: 'Jan 12 – 20', duration: 'Half day', spots: '12 places left', low: false },
-      { label: 'Feb 10 – 18', duration: 'Half day', spots: '10 places left', low: false },
-      { label: 'Mar 2 – 10',  duration: 'Half day', spots: '8 places left',  low: false }
+      { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+      // { label: 'Jan 12 – 20', duration: 'Half day', spots: '12 places left', low: false },
+      // { label: 'Feb 10 – 18', duration: 'Half day', spots: '10 places left', low: false },
+      // { label: 'Mar 2 – 10',  duration: 'Half day', spots: '8 places left',  low: false }
     ]
   },
 
@@ -246,9 +264,14 @@ const COURSES = {
     ],
     dates: [
       // { label: 'Mar 26 – 27', duration: '2 days', spots: '6 places left', low: false },
-      { label: 'June 3 – 4', duration: '2 days', spots: '12 places left', low: false },
-      { label: 'Aug 17 – 18',  duration: '2 days', spots: '12 places left', low: true  }
+      // { label: 'June 3 – 4', duration: '2 days', spots: '12 places left', low: false },
+      { label: 'August 17 – 18',  duration: '2 days', spots: '12 places left', low: true  },
+      { label: 'November 21 – 22', duration: '2 days', spots: '12 places left', low: false },
+      { label: 'March 6 – 7',  duration: '2 days', spots: '12 places left', low: true, year: 2027 },
+      { label: 'May 29 – 30', duration: '2 days', spots: '12 places left', low: false, year: 2027 },
+      { label: 'July 30 – 31', duration: '2 days', spots: '12 places left', low: false, year: 2027 },
     ]
+
   },
 
   'ds-refresher': {
@@ -259,11 +282,15 @@ const COURSES = {
       'Legislation Changes', 'Scenario-Based Training', 'Course Certificate'
     ],
     dates: [
-      // { label: 'Mar 16 – 18', duration: '3 days', spots: '6 places left', low: false },
+     
+      { label: 'July 24 – 26',  duration: '3 days', spots: '12 places left', low: true  },
+       { label: 'October 9 – 11',  duration: '3 days', spots: '12 places left', low: true  },
+         { label: 'November 6 – 8', duration: '3 days', spots: '12 places left', low: false },
+          { label: 'January 29 – 31',  duration: '3 days', spots: '12 places left', low: true, year: 2027 },
+       { label: 'February 19 – 21',  duration: '3 days', spots: '12 places left', low: true, year: 2027 },
+         { label: 'March 12 – 14', duration: '3 days', spots: '12 places left', low: false, year: 2027 },
       // { label: 'May 29 – 31', duration: '3 days', spots: '12 places left', low: false },
      // { label: 'Jun 8 – 10',  duration: '3 days', spots: '12 places left', low: true  },
-      { label: 'July 24 – 26',  duration: '3 days', spots: '12 places left', low: true  },
-       { label: 'Oct 9 – 11',  duration: '3 days', spots: '12 places left', low: true  }
     ]
   },
 
@@ -274,7 +301,8 @@ const COURSES = {
       'Fire Risk Assessment', 'Fire Wardrobe Procedures', 'Fire Drill Procedures', 'Fire Safety Certificate'
     ],
     dates: [
-      { label: 'April 30', duration: '1 days', spots: '6 places left', low: false },
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+      // { label: 'April 30', duration: '1 days', spots: '6 places left', low: false },
       // { label: 'May 29 – 31', duration: '3 days', spots: '7 places left', low: false },
       // { label: 'Jun 8 – 10',  duration: '3 days', spots: '7 places left', low: true  }
     ]
@@ -286,7 +314,7 @@ const COURSES = {
       'Personal Security', 'Accommodation Security', 'what to take', 'first aid', 'staying fit and healthy', 'what to do in an emergency', 'how to stay in touch', 'Transport safety', 'cultural issues', 'drugs and alcohol', 'Conflict Management', 'Navigation'
     ],
     dates: [
-      { label: 'July 10 – July 11', duration: '1 day', spots: '8 places left', low: false }
+      { label: 'July 10 – July 11', duration: '1 day', spots: '12 places left', low: false }
     ]
   }
 
