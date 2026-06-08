@@ -138,7 +138,9 @@ const COURSES = {
     dates: [
   
       // { label: 'July 25', duration: '1 day', spots: '6 places left', low: false },
-       { label: 'October 18',  duration: '1 day', spots: '12 places left',  low: false }
+       { label: 'October 18',  duration: '1 day', spots: '12 places left',  low: false },
+       //{ label: 'April 21',  duration: '1 day', spots: '12 places left',  low: false, year: 2027 },
+       { label: 'April 21',  duration: '1 day', spots: '12 places left',  low: false }
     ]
   },
 
