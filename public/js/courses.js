@@ -79,7 +79,7 @@ const COURSES = {
     ],
     dates: [
      // { label: 'April 20 – 22', duration: '3 days', spots: '10 places left', low: false },
-      { label: 'June 5 – 7', duration: '3 days', spots: '12 places left',  low: false },
+       // { label: 'June 5 – 7', duration: '3 days', spots: '12 places left',  low: false },
       // { label: 'Mar 2 – 10',  duration: '3 days', spots: '2 places left',  low: true  }
     ]
   },
@@ -217,7 +217,7 @@ const COURSES = {
     dates: [
      //  { label: 'Mar 20 – 22', duration: '3 days', spots: '5 places left', low: true  },
      // { label: 'May 15 – 17', duration: '3 days', spots: '6 places left', low: false },
-     { label: 'August 10 – 12',  duration: '3 days', spots: '12 places left', low: false },
+     { label: 'August 1 – 2',  duration: '2 days', spots: '12 places left', low: false },
       { label: 'December 4 – 6',  duration: '3 days', spots: '12 places left', low: false },
       { label: 'February 26 – 28',  duration: '3 days', spots: '12 places left', low: false, year: 2027 },
       { label: 'April 2 – 4',  duration: '3 days', spots: '12 places left', low: false, year: 2027 },
@@ -267,7 +267,7 @@ const COURSES = {
     dates: [
       // { label: 'Mar 26 – 27', duration: '2 days', spots: '6 places left', low: false },
       // { label: 'June 3 – 4', duration: '2 days', spots: '12 places left', low: false },
-      { label: 'August 17 – 18',  duration: '2 days', spots: '12 places left', low: true  },
+      { label: 'September 28 – 29',  duration: '2 days', spots: '12 places left', low: true  },
       { label: 'November 21 – 22', duration: '2 days', spots: '12 places left', low: false },
       { label: 'March 6 – 7',  duration: '2 days', spots: '12 places left', low: true, year: 2027 },
       { label: 'May 29 – 30', duration: '2 days', spots: '12 places left', low: false, year: 2027 },
@@ -316,7 +316,7 @@ const COURSES = {
       'Personal Security', 'Accommodation Security', 'what to take', 'first aid', 'staying fit and healthy', 'what to do in an emergency', 'how to stay in touch', 'Transport safety', 'cultural issues', 'drugs and alcohol', 'Conflict Management', 'Navigation'
     ],
     dates: [
-      { label: 'July 10 – July 11', duration: '1 day', spots: '12 places left', low: false }
+      { label: 'July 10 – July 11', duration: '1 day', spots: '12 places left', low: true, year: 2027 }
     ]
   }
 
