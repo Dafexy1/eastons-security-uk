@@ -79,7 +79,8 @@ const COURSES = {
     ],
     dates: [
      // { label: 'April 20 – 22', duration: '3 days', spots: '10 places left', low: false },
-       // { label: 'June 5 – 7', duration: '3 days', spots: '12 places left',  low: false },
+      { label: 'Coming Soon', duration: '3 days', spots: '', low: true  },
+     // { label: 'June 5 – 7', duration: '3 days', spots: '12 places left',  low: false },
       // { label: 'Mar 2 – 10',  duration: '3 days', spots: '2 places left',  low: true  }
     ]
   },
@@ -316,7 +317,7 @@ const COURSES = {
       'Personal Security', 'Accommodation Security', 'what to take', 'first aid', 'staying fit and healthy', 'what to do in an emergency', 'how to stay in touch', 'Transport safety', 'cultural issues', 'drugs and alcohol', 'Conflict Management', 'Navigation'
     ],
     dates: [
-      { label: 'July 10 – July 11', duration: '1 day', spots: '12 places left', low: true, year: 2027 }
+      { label: 'July 10 – July 11', duration: '1 day', spots: '12 places left', low: false,  year: 2027}
     ]
   }
 
