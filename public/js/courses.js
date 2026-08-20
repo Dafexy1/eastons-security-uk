@@ -95,7 +95,7 @@ const COURSES = {
     dates: [
    
       // { label: 'July 20 – 22', duration: '3 days', spots: '12 places left', low: false },
-       { label: 'September 11 – 13',  duration: '3 days', spots: '12 places left', low: false }
+       { label: 'October 15 – 17',  duration: '3 days', spots: '12 places left', low: false }
     ]
   },
 
