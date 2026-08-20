@@ -10,7 +10,7 @@
 const COURSES = {
 
   'close-protection': {
-    name: 'Close Protection & FREC 3', tag: 'Course', price: '£2600', priceNum: 2600,
+    name: 'Close Protection & FREC 3', tag: 'Course', price: '£2400', priceNum: 2400,
     desc: 'Our Close Protection course is run over 23 days, which includes both security and medical lessons, depending on your requirements. The course can also be tailored to suit any specific needs. By working closely with your organisation, we can conduct an analysis of your situation and provide the best solutions possible for your employees. COURSE SYLLABUS: Unit 1 & 2 Principles & working as a Close protection officer',
     features: [
       'Roles and Responsibilities', 'Legislation of a CP Operative', 'Threat Assessment',
@@ -24,7 +24,7 @@ const COURSES = {
     ],
     dates: [
       // { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
-       { label: 'September 21 – October 14', duration: '23 days',  spots: '12 places left', low: false },
+       { label: 'March 8 – March 31', duration: '23 days',  spots: '12 places left', low: false },
       // { label: 'February 10 – 18', duration: '9 days',  spots: '8 places left', low: false },
       // { label: 'March 2 – 10',  duration: '9 days',  spots: '3 places left', low: true  }
     ]
@@ -43,8 +43,8 @@ const COURSES = {
     dates: [
      // { label: 'April 6 – 12', duration: '7 days', spots: '8 places left', low: true  },
      // { label: 'May 4 – 10', duration: '7 days', spots: '12 places left', low: false },
-      { label: 'July 13 – 19',  duration: '7 days', spots: '12 places left', low: false },
-      { label: 'August 3 – 9',  duration: '7 days', spots: '12 places left', low: false },
+      // { label: 'July 13 – 19',  duration: '7 days', spots: '12 places left', low: false },
+     // { label: 'August 3 – 9',  duration: '7 days', spots: '12 places left', low: false },
       { label: 'October 19 – 25',  duration: '7 days', spots: '12 places left', low: false },
       { label: 'November 23 – 29',  duration: '7 days', spots: '12 places left', low: false },
        { label: 'January 11 – 17',  duration: '7 days', spots: '12 places left', low: false, year: 2027},
@@ -218,7 +218,7 @@ const COURSES = {
     dates: [
      //  { label: 'Mar 20 – 22', duration: '3 days', spots: '5 places left', low: true  },
      // { label: 'May 15 – 17', duration: '3 days', spots: '6 places left', low: false },
-     { label: 'August 1 – 2',  duration: '2 days', spots: '12 places left', low: false },
+     // { label: 'August 1 – 2',  duration: '2 days', spots: '12 places left', low: false },
       { label: 'December 4 – 6',  duration: '3 days', spots: '12 places left', low: false },
       { label: 'February 26 – 28',  duration: '3 days', spots: '12 places left', low: false, year: 2027 },
       { label: 'April 2 – 4',  duration: '3 days', spots: '12 places left', low: false, year: 2027 },
@@ -286,7 +286,7 @@ const COURSES = {
     ],
     dates: [
      
-      { label: 'July 24 – 26',  duration: '3 days', spots: '12 places left', low: true  },
+      // { label: 'July 24 – 26',  duration: '3 days', spots: '12 places left', low: true  },
        { label: 'October 9 – 11',  duration: '3 days', spots: '12 places left', low: true  },
          { label: 'November 6 – 8', duration: '3 days', spots: '12 places left', low: false },
           { label: 'January 29 – 31',  duration: '3 days', spots: '12 places left', low: true, year: 2027 },
