@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Easton's Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --red:       #c0392b;
+      --red-dark:  #96281b;
+      --dark:      #1a1a1a;
+      --mid:       #2c2c2c;
+      --border:    #3a3a3a;
+      --text:      #e8e8e8;
+      --text-mid:  #aaa;
+      --white:     #ffffff;
+      --green:     #27ae60;
+      --orange:    #e67e22;
+      --font-d:    'Oswald', sans-serif;
+      --font-b:    'Lato', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #111;
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 14px;
+      min-height: 100vh;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: var(--dark);
+      border-bottom: 3px solid var(--red);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar-brand {
+      font-family: var(--font-d);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .topbar-brand span { color: var(--red); }
+    .topbar-actions { display: flex; gap: 10px; align-items: center; }
+
+    /* ── Layout ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: calc(100vh - 60px);
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: var(--dark);
+      border-right: 1px solid var(--border);
+      padding: 20px 0;
+      overflow-y: auto;
+    }
+    .sidebar-label {
+      font-family: var(--font-d);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      padding: 0 20px 8px;
+      margin-top: 16px;
+    }
+    .course-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      border-left: 3px solid transparent;
+      padding: 10px 20px;
+      color: var(--text-mid);
+      font-family: var(--font-b);
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.15s;
+    }
+    .course-btn:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+    .course-btn.active { border-left-color: var(--red); background: rgba(192,57,43,0.12); color: var(--white); }
+    .course-btn .tag {
+      font-size: 9px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--border);
+      color: var(--text-mid);
+      flex-shrink: 0;
+    }
+    .course-btn.active .tag { background: var(--red); color: #fff; }
+
+    /* ── Main panel ── */
+    .main {
+      padding: 28px 32px;
+      overflow-y: auto;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      gap: 16px;
+    }
+    .panel-title {
+      font-family: var(--font-d);
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .panel-subtitle { font-size: 13px; color: var(--text-mid); margin-top: 4px; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .card-head {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .card-title {
+      font-family: var(--font-d);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+    .card-body { padding: 20px; }
+
+    /* ── Form elements ── */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group:last-child { margin-bottom: 0; }
+    label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-mid); font-weight: 700; }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      background: #111;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      font-family: var(--font-b);
+      font-size: 13px;
+      border-radius: 3px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--red); }
+    textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+    select option { background: var(--dark); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border: none;
+      border-radius: 3px;
+      font-family: var(--font-d);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-red    { background: var(--red);    color: #fff; }
+    .btn-red:hover { background: var(--red-dark); }
+    .btn-ghost  { background: transparent; border: 1px solid var(--border); color: var(--text-mid); }
+    .btn-ghost:hover { border-color: var(--text-mid); color: var(--text); }
+    .btn-green  { background: var(--green);  color: #fff; }
+    .btn-green:hover { background: #219150; }
+    .btn-danger { background: transparent; border: 1px solid #e74c3c44; color: #e74c3c; }
+    .btn-danger:hover { background: #e74c3c22; }
+    .btn-sm { padding: 6px 12px; font-size: 10px; }
+
+    /* ── Dates table ── */
+    .dates-table { width: 100%; border-collapse: collapse; }
+    .dates-table th {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-weight: 700;
+    }
+    .dates-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #222;
+      vertical-align: middle;
+    }
+    .dates-table tr:last-child td { border-bottom: none; }
+    .dates-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .dates-table input { margin: 0; }
+
+    .low-badge {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 2px;
+      background: rgba(230,126,34,0.2);
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Add date row ── */
+    .add-date-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr auto;
+      gap: 10px;
+      align-items: end;
+      padding: 16px 20px;
+      background: #0d0d0d;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Toggle ── */
+    .toggle-wrap { display: flex; align-items: center; gap: 8px; }
+    .toggle {
+      position: relative;
+      width: 36px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: var(--border);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 14px; height: 14px;
+      left: 3px; top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+    .toggle input:checked + .toggle-slider { background: var(--orange); }
+    .toggle input:checked + .toggle-slider::before { transform: translateX(16px); }
+
+    /* ── Features list ── */
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #222;
+    }
+    .feature-item:last-child { border-bottom: none; }
+    .feature-item input { flex: 1; }
+    .feature-item .drag { color: var(--border); cursor: grab; font-size: 16px; }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-family: var(--font-d);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      z-index: 999;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    .toast.error { background: var(--red); }
+    .toast.show { display: flex; }
+
+    /* ── Export modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .export-modal {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      width: 90%;
+      max-width: 700px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .export-modal-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .export-modal-title {
+      font-family: var(--font-d);
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .export-modal-body { padding: 20px; overflow-y: auto; flex: 1; }
+    pre {
+      background: #0a0a0a;
+      border: 1px solid var(--border);
+      padding: 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      line-height: 1.7;
+      color: #7ec8e3;
+      overflow-x: auto;
+      white-space: pre;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .export-modal-foot {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    /* ── Empty state ── */
+    .empty {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--text-mid);
+    }
+    .empty i { font-size: 36px; margin-bottom: 12px; display: block; }
+
+    /* ── Stats strip ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .stat {
+      background: var(--dark);
+      padding: 16px 20px;
+    }
+    .stat-val {
+      font-family: var(--font-d);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-val span { font-size: 16px; color: var(--red); }
+    .stat-label { font-size: 11px; color: var(--text-mid); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* ── Section tabs ── */
+    .tabs { display: flex; gap: 2px; margin-bottom: 20px; }
+    .tab {
+      padding: 8px 18px;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      color: var(--text-mid);
+      font-family: var(--font-d);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.15s;
+    }
+    .tab.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    @media (max-width: 768px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .form-row, .form-row-3 { grid-template-columns: 1fr; }
+      .add-date-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-brand">Easton's <span>Training</span> &nbsp;—&nbsp; Admin</div>
+  <div class="topbar-actions">
+    <button class="btn btn-ghost btn-sm" onclick="window.open('/', '_blank')">
+      <i class="fa fa-arrow-up-right-from-square"></i> View Site
+    </button>
+    <button class="btn btn-green btn-sm" onclick="openExportModal()">
+      <i class="fa fa-download"></i> Export courses.js
+    </button>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar"></div>
+
+  <!-- MAIN -->
+  <div class="main" id="main">
+    <div class="empty">
+      <i class="fa fa-arrow-left" style="color:var(--red)"></i>
+      <p>Select a course from the sidebar to edit it.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- EXPORT MODAL -->
+<div class="modal-overlay" id="exportModal">
+  <div class="export-modal">
+    <div class="export-modal-head">
+      <div class="export-modal-title"><i class="fa fa-code" style="color:var(--red);margin-right:8px;"></i>Export — courses.js</div>
+      <button class="btn btn-ghost btn-sm" onclick="closeExportModal()"><i class="fa fa-xmark"></i></button>
+    </div>
+    <div class="export-modal-body">
+      <p style="font-size:13px;color:var(--text-mid);margin-bottom:14px;line-height:1.6;">
+        Copy the code below and replace your <code style="background:#111;padding:2px 6px;border-radius:2px;color:#7ec8e3;">public/js/courses.js</code> file. Then commit and push to deploy.
+      </p>
+      <pre id="exportCode"></pre>
+    </div>
+    <div class="export-modal-foot">
+      <button class="btn btn-ghost" onclick="closeExportModal()">Close</button>
+      <button class="btn btn-red" onclick="copyExport()">
+        <i class="fa fa-copy"></i> Copy to Clipboard
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+// ─────────────────────────────────────────────────────────────────
+//  STATE — loaded from localStorage, falls back to defaults
+// ─────────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'et_admin_courses';
+
+const DEFAULT_COURSES = {
+  'close-protection': {
+    name: 'Close Protection', tag: 'Course', price: '£995', priceNum: 995,
+    desc: 'Our Close Protection course is run over 23 days, which includes both security and medical lessons, depending on your requirements.',
+    features: ['Roles and Responsibilities','Legislation of a CP Operative','Threat Assessment','Risk Management','Personal & Professional Skills','Enhanced Surveillance Package','Search Procedures','Foot Drills','Venue Security','Route Planning','Reconnaissance','Transport Management'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '9 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '9 days', spots: '8 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '9 days', spots: '3 places left', low: true,  year: 2026 }
+    ]
+  },
+  'door-supervisor': {
+    name: 'Door Supervisor', tag: 'Course', price: '£695', priceNum: 695,
+    desc: 'Our Door Supervisors course can be run over 7 days. The Qualification comprises 4 mandatory Units.',
+    features: ['Unit 1 – Working within the Private Security Industry','Unit 2 – Working as a Door Supervisor','Unit 3 – Conflict Management','Unit 4 – Physical Intervention','First Aid at Work / Emergency First Aid at Work'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '9 days', spots: '5 places left', low: true,  year: 2026 },
+      { label: 'Feb 10 – 18', duration: '9 days', spots: '8 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '9 days', spots: '7 places left', low: false, year: 2026 }
+    ]
+  },
+  'security-officer': {
+    name: 'Security Officer', tag: 'Course', price: '£495', priceNum: 495,
+    desc: 'Our Security Officers course can be run over 6 days. This qualification consists of four mandatory units.',
+    features: ['Unit 1 – Working within the Private Security Industry','Unit 2 – Working as a Security Officer','Unit 3 – Conflict Management','First Aid at Work / Emergency First Aid at Work'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '9 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '9 days', spots: '4 places left', low: true,  year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '9 days', spots: '8 places left', low: false, year: 2026 }
+    ]
+  },
+  'stewarding': {
+    name: 'Stewarding', tag: 'Course', price: '£195', priceNum: 195,
+    desc: 'Stewarding is a fantastic way to see UK events while making a difference to everyone who attends.',
+    features: ['Spectator Safety Award','Crowd Management','Event Safety Procedures','Emergency Evacuation','Communication Skills','Course Certificate'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '3 days', spots: '10 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '3 days', spots: '8 places left',  low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '3 days', spots: '2 places left',  low: true,  year: 2026 }
+    ]
+  },
+  'cctv': {
+    name: 'CCTV', tag: 'Course', price: '£395', priceNum: 395,
+    desc: 'The SIA CCTV training course is 3 days assessed by 2 multiple choice exams and a practical assessment.',
+    features: ['SIA CCTV Operator Award','Camera Operation','GDPR & Legal Compliance','Incident Recording','Monitoring Procedures','Course Certificate'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '5 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '5 days', spots: '8 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '5 days', spots: '4 places left', low: false, year: 2026 }
+    ]
+  },
+  'conflict-management': {
+    name: 'Conflict Management', tag: 'Course', price: '£195', priceNum: 195,
+    desc: 'Practical training in de-escalation, communication strategies, and situational awareness.',
+    features: ['De-escalation Techniques','Communication Strategies','Situational Awareness','Post-Incident Reporting','Corporate Risk Assessment','24/7 Tutor Access'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '2 days', spots: '8 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '2 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true,  year: 2026 }
+    ]
+  },
+  'physical-intervention': {
+    name: 'Physical Intervention', tag: 'Course', price: '£295', priceNum: 295,
+    desc: 'Covers breakaway techniques, restraint procedures, and the legal use of force.',
+    features: ['Breakaway Techniques','Restraint Procedures','Legal Use of Force','Personal Safety','Scenario-Based Training','24/7 Tutor Support'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '2 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '2 days', spots: '4 places left', low: true,  year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '2 days', spots: '8 places left', low: false, year: 2026 }
+    ]
+  },
+  'fire-safety': {
+    name: 'Fire Safety', tag: 'Course', price: '£175', priceNum: 175,
+    desc: 'Covers fire risk awareness, correct use of extinguishers, evacuation procedures, and legislative compliance.',
+    features: ['Fire Risk Awareness','Extinguisher Handling','Evacuation Procedures','Legislative Compliance','Warden Responsibilities','Course Certificate'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '1 day', spots: '12 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '1 day', spots: '10 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '1 day', spots: '5 places left',  low: false, year: 2026 }
+    ]
+  },
+  'first-aid-at-work': {
+    name: 'First Aid at Work', tag: 'Course', price: '£295', priceNum: 295,
+    desc: 'HSE-regulated three-day First Aid at Work qualification covering CPR, AED use, wound and fracture care.',
+    features: ['HSE Regulated FAW','CPR & AED Use','Wound & Fracture Care','Medical Emergencies','Practical Scenarios','Course Certificate'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '3 days', spots: '8 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '3 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '3 days', spots: '4 places left', low: false, year: 2026 }
+    ]
+  },
+  'frec3': {
+    name: 'FREC 3', tag: 'Course', price: '£595', priceNum: 595,
+    desc: 'First Response Emergency Care Level 3 — pre-hospital emergency care covering airway management and trauma assessment.',
+    features: ['Pre-hospital Emergency Care','Airway Management','Trauma Assessment','Patient Monitoring','Practical Scenarios','Course Certificate'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '5 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '5 days', spots: '4 places left', low: true,  year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '5 days', spots: '8 places left', low: false, year: 2026 }
+    ]
+  },
+  'efaw': {
+    name: 'EFAW', tag: 'Course', price: '£125', priceNum: 125,
+    desc: 'Emergency First Aid at Work — one day HSE-regulated course covering CPR, AED basics, choking, bleeding, shock, and burns.',
+    features: ['Emergency First Aid','CPR & AED Basics','Choking & Bleeding','Shock & Burns','Practical Scenarios','Course Certificate'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '1 day', spots: '12 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '1 day', spots: '10 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '1 day', spots: '6 places left',  low: false, year: 2026 }
+    ]
+  },
+  'mental-health': {
+    name: 'Mental Health', tag: 'Course', price: '£195', priceNum: 195,
+    desc: 'Mental Health First Aid training covering crisis identification, de-escalation support, and signposting resources.',
+    features: ['Mental Health First Aid','Crisis Identification','De-escalation Support','Signposting Resources','Practical Scenarios','24/7 Tutor Access'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '2 days', spots: '8 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '2 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true,  year: 2026 }
+    ]
+  },
+  'cp-refresher': {
+    name: 'Close Protection (Refresher)', tag: 'Refresher', price: '£395', priceNum: 395,
+    desc: 'Designed for anyone who needs to renew their CP licence. Last CP licence must not have expired more than 3 years ago.',
+    features: ['Principles of Terror Threat Awareness','Principles of Working as a Door Supervisor for CP Operatives','Application of Physical Intervention Skills'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '3 days', spots: '4 places left', low: true,  year: 2026 },
+      { label: 'Feb 10 – 18', duration: '3 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '3 days', spots: '5 places left', low: false, year: 2026 }
+    ]
+  },
+  'efaw-refresher': {
+    name: 'EFAW (Refresher)', tag: 'Refresher', price: '£75', priceNum: 75,
+    desc: 'Annual refresher for EFAW certificate holders. Keeps CPR and AED skills current with the latest guidelines.',
+    features: ['CPR Skills Update','AED Practical Review','Updated Guidelines','Scenario Practice','Certificate Renewal','Half Day Course'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: 'Half day', spots: '12 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: 'Half day', spots: '10 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: 'Half day', spots: '8 places left',  low: false, year: 2026 }
+    ]
+  },
+  'so-refresher': {
+    name: 'Security Officer (Refresher)', tag: 'Refresher', price: '£195', priceNum: 195,
+    desc: 'SIA licence renewal for qualified Security Guards. Updated patrol procedures, legislation changes, and practical skills review.',
+    features: ['SIA Licence Renewal','Updated Patrol Skills','Guarding Review','One-on-One Support','Legislation Update','24/7 Tutor Support'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '2 days', spots: '6 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '2 days', spots: '4 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true,  year: 2026 }
+    ]
+  },
+  'ds-refresher': {
+    name: 'Door Supervisor (Refresher)', tag: 'Refresher', price: '£295', priceNum: 295,
+    desc: 'SIA licence renewal for qualified Door Supervisors. Covers physical intervention updates and conflict management review.',
+    features: ['SIA Licence Renewal','Physical Intervention Update','Conflict Management Review','Legislation Changes','Scenario-Based Training','Course Certificate'],
+    dates: [
+      { label: 'Jan 12 – 20', duration: '2 days', spots: '5 places left', low: false, year: 2026 },
+      { label: 'Feb 10 – 18', duration: '2 days', spots: '7 places left', low: false, year: 2026 },
+      { label: 'Mar 2 – 10',  duration: '2 days', spots: '2 places left', low: true,  year: 2026 }
+    ]
+  }
+};
+
+// Load from localStorage or use defaults
+let courses = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || JSON.parse(JSON.stringify(DEFAULT_COURSES));
+let activeKey = null;
+let activeTab = 'dates';
+
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(courses));
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  SIDEBAR
+// ─────────────────────────────────────────────────────────────────
+function renderSidebar() {
+  const tags = [...new Set(Object.values(courses).map(c => c.tag))];
+  let html = '';
+  tags.forEach(tag => {
+    html += `<div class="sidebar-label">${tag}s</div>`;
+    Object.entries(courses).forEach(([key, c]) => {
+      if (c.tag !== tag) return;
+      html += `<button class="course-btn ${key === activeKey ? 'active' : ''}" onclick="selectCourse('${key}')">
+        <span class="tag">${c.tag}</span>
+        ${c.name}
+      </button>`;
+    });
+  });
+  document.getElementById('sidebar').innerHTML = html;
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  SELECT COURSE
+// ─────────────────────────────────────────────────────────────────
+function selectCourse(key) {
+  activeKey = key;
+  activeTab = 'dates';
+  renderSidebar();
+  renderMain();
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  MAIN PANEL
+// ─────────────────────────────────────────────────────────────────
+function renderMain() {
+  if (!activeKey) return;
+  const c = courses[activeKey];
+  const totalSpots = c.dates.reduce((sum, d) => {
+    const n = parseInt(d.spots);
+    return sum + (isNaN(n) ? 0 : n);
+  }, 0);
+  const lowCount = c.dates.filter(d => d.low).length;
+
+  document.getElementById('main').innerHTML = `
+    <div class="panel-header">
+      <div>
+        <div class="panel-title">${c.name}</div>
+        <div class="panel-subtitle">Key: <code style="color:var(--red)">${activeKey}</code> &nbsp;•&nbsp; ${c.dates.length} date${c.dates.length !== 1 ? 's' : ''} scheduled</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-danger btn-sm" onclick="resetCourse()"><i class="fa fa-rotate-left"></i> Reset</button>
+        <button class="btn btn-red btn-sm" onclick="saveCourse()"><i class="fa fa-floppy-disk"></i> Save Changes</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">${c.dates.length}</div>
+        <div class="stat-label">Scheduled Dates</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">${totalSpots}</div>
+        <div class="stat-label">Total Places</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" style="color:var(--orange)">${lowCount}</div>
+        <div class="stat-label">Low Availability</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab ${activeTab==='dates'?'active':''}" onclick="switchTab('dates')"><i class="fa fa-calendar" style="margin-right:6px"></i>Dates</div>
+      <div class="tab ${activeTab==='info'?'active':''}" onclick="switchTab('info')"><i class="fa fa-pen" style="margin-right:6px"></i>Course Info</div>
+      <div class="tab ${activeTab==='features'?'active':''}" onclick="switchTab('features')"><i class="fa fa-list-check" style="margin-right:6px"></i>Features</div>
+    </div>
+
+    <div class="tab-panel ${activeTab==='dates'?'active':''}" id="tab-dates">
+      ${renderDatesTab(c)}
+    </div>
+    <div class="tab-panel ${activeTab==='info'?'active':''}" id="tab-info">
+      ${renderInfoTab(c)}
+    </div>
+    <div class="tab-panel ${activeTab==='features'?'active':''}" id="tab-features">
+      ${renderFeaturesTab(c)}
+    </div>
+  `;
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  renderMain();
+}
+
+// ── Dates tab ────────────────────────────────────────────────────
+function renderDatesTab(c) {
+  const rows = c.dates.map((d, i) => `
+    <tr>
+      <td>
+        <input type="text" value="${d.label}" onchange="updateDate(${i},'label',this.value)"
+          style="width:140px" placeholder="e.g. Jan 12 – 20" />
+      </td>
+      <td>
+        <select onchange="updateDate(${i},'year',parseInt(this.value))">
+          <option value="2026" ${(d.year||2026)===2026?'selected':''}>2026</option>
+          <option value="2027" ${d.year===2027?'selected':''}>2027</option>
+          <option value="2028" ${d.year===2028?'selected':''}>2028</option>
+        </select>
+      </td>
+      <td>
+        <input type="text" value="${d.duration}" onchange="updateDate(${i},'duration',this.value)"
+          style="width:100px" placeholder="e.g. 7 days" />
+      </td>
+      <td>
+        <input type="text" value="${d.spots}" onchange="updateDate(${i},'spots',this.value)"
+          style="width:130px" placeholder="e.g. 8 places left" />
+      </td>
+      <td>
+        <div class="toggle-wrap">
+          <label class="toggle">
+            <input type="checkbox" ${d.low?'checked':''} onchange="updateDate(${i},'low',this.checked)" />
+            <span class="toggle-slider"></span>
+          </label>
+          ${d.low ? '<span class="low-badge">Low</span>' : '<span style="color:var(--text-mid);font-size:11px;">Normal</span>'}
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-danger btn-sm" onclick="removeDate(${i})"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('');
+
+  return `
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="fa fa-calendar-days" style="margin-right:8px;color:var(--red)"></i>Scheduled Dates</div>
+      </div>
+      <table class="dates-table">
+        <thead>
+          <tr>
+            <th>Date Range</th>
+            <th>Year</th>
+            <th>Duration</th>
+            <th>Availability</th>
+            <th>Low Alert</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>${rows.length ? rows : '<tr><td colspan="6"><div class="empty"><i class="fa fa-calendar-xmark"></i><p>No dates scheduled</p></div></td></tr>'}</tbody>
+      </table>
+      <div class="add-date-row" id="addDateRow">
+        <div class="form-group" style="margin:0">
+          <label>Date Range</label>
+          <input type="text" id="nd-label" placeholder="e.g. July 13 – 19" />
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Year</label>
+          <select id="nd-year">
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Duration</label>
+          <input type="text" id="nd-duration" placeholder="e.g. 7 days" />
+        </div>
+        <div class="form-group" style="margin:0">
+          <label>Places</label>
+          <input type="text" id="nd-spots" placeholder="e.g. 12 places left" />
+        </div>
+        <button class="btn btn-red" onclick="addDate()" style="align-self:flex-end">
+          <i class="fa fa-plus"></i> Add
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+// ── Info tab ─────────────────────────────────────────────────────
+function renderInfoTab(c) {
+  return `
+    <div class="card">
+      <div class="card-head"><div class="card-title"><i class="fa fa-circle-info" style="margin-right:8px;color:var(--red)"></i>Course Details</div></div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Course Name</label>
+            <input type="text" id="fi-name" value="${escHtml(c.name)}" />
+          </div>
+          <div class="form-group">
+            <label>Tag</label>
+            <select id="fi-tag">
+              <option ${c.tag==='Course'?'selected':''}>Course</option>
+              <option ${c.tag==='Refresher'?'selected':''}>Refresher</option>
+              <option ${c.tag==='Specialist'?'selected':''}>Specialist</option>
+              <option ${c.tag==='Medical'?'selected':''}>Medical</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Display Price (e.g. £695)</label>
+            <input type="text" id="fi-price" value="${escHtml(c.price)}" />
+          </div>
+          <div class="form-group">
+            <label>Price in pence (numeric, e.g. 695)</label>
+            <input type="number" id="fi-pricenum" value="${c.priceNum}" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="fi-desc" rows="5">${escHtml(c.desc)}</textarea>
+        </div>
+        <button class="btn btn-red" onclick="saveInfo()"><i class="fa fa-floppy-disk"></i> Save Info</button>
+      </div>
+    </div>
+  `;
+}
+
+// ── Features tab ─────────────────────────────────────────────────
+function renderFeaturesTab(c) {
+  const items = c.features.map((f, i) => `
+    <div class="feature-item">
+      <span class="drag"><i class="fa fa-grip-vertical"></i></span>
+      <input type="text" value="${escHtml(f)}" onchange="updateFeature(${i}, this.value)" />
+      <button class="btn btn-danger btn-sm" onclick="removeFeature(${i})"><i class="fa fa-trash"></i></button>
+    </div>
+  `).join('');
+
+  return `
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title"><i class="fa fa-list-check" style="margin-right:8px;color:var(--red)"></i>What's Included</div>
+        <button class="btn btn-ghost btn-sm" onclick="addFeature()"><i class="fa fa-plus"></i> Add</button>
+      </div>
+      <div class="card-body">
+        <div id="featuresList">${items}</div>
+      </div>
+    </div>
+  `;
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  ACTIONS — Dates
+// ─────────────────────────────────────────────────────────────────
+function updateDate(i, field, value) {
+  courses[activeKey].dates[i][field] = value;
+}
+
+function removeDate(i) {
+  courses[activeKey].dates.splice(i, 1);
+  save();
+  renderMain();
+  toast('Date removed');
+}
+
+function addDate() {
+  const label    = document.getElementById('nd-label').value.trim();
+  const year     = parseInt(document.getElementById('nd-year').value);
+  const duration = document.getElementById('nd-duration').value.trim();
+  const spots    = document.getElementById('nd-spots').value.trim();
+
+  if (!label || !duration || !spots) {
+    toast('Fill in all date fields', true); return;
+  }
+
+  courses[activeKey].dates.push({ label, year, duration, spots, low: false });
+  save();
+  renderMain();
+  toast('Date added ✓');
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  ACTIONS — Info
+// ─────────────────────────────────────────────────────────────────
+function saveInfo() {
+  const name     = document.getElementById('fi-name').value.trim();
+  const tag      = document.getElementById('fi-tag').value;
+  const price    = document.getElementById('fi-price').value.trim();
+  const priceNum = parseInt(document.getElementById('fi-pricenum').value);
+  const desc     = document.getElementById('fi-desc').value.trim();
+
+  if (!name || !price || isNaN(priceNum)) {
+    toast('Name, price, and numeric price are required', true); return;
+  }
+
+  Object.assign(courses[activeKey], { name, tag, price, priceNum, desc });
+  save();
+  renderSidebar();
+  toast('Course info saved ✓');
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  ACTIONS — Features
+// ─────────────────────────────────────────────────────────────────
+function updateFeature(i, value) {
+  courses[activeKey].features[i] = value;
+}
+
+function removeFeature(i) {
+  courses[activeKey].features.splice(i, 1);
+  save();
+  renderMain();
+  toast('Feature removed');
+}
+
+function addFeature() {
+  courses[activeKey].features.push('New feature');
+  save();
+  renderMain();
+  // Focus the new input
+  const items = document.querySelectorAll('#featuresList .feature-item input');
+  if (items.length) items[items.length - 1].focus();
+  toast('Feature added — edit the text above ✓');
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  SAVE ALL / RESET
+// ─────────────────────────────────────────────────────────────────
+function saveCourse() {
+  // Flush any open inputs
+  const c = courses[activeKey];
+
+  // Flush date inputs from DOM
+  const rows = document.querySelectorAll('.dates-table tbody tr');
+  rows.forEach((row, i) => {
+    if (!c.dates[i]) return;
+    const inputs = row.querySelectorAll('input[type="text"]');
+    if (inputs[0]) c.dates[i].label    = inputs[0].value;
+    if (inputs[1]) c.dates[i].duration = inputs[1].value;
+    if (inputs[2]) c.dates[i].spots    = inputs[2].value;
+    const yearSel = row.querySelector('select');
+    if (yearSel) c.dates[i].year = parseInt(yearSel.value);
+    const checkbox = row.querySelector('input[type="checkbox"]');
+    if (checkbox) c.dates[i].low = checkbox.checked;
+  });
+
+  // Flush feature inputs
+  const fInputs = document.querySelectorAll('#featuresList input[type="text"]');
+  fInputs.forEach((inp, i) => { if (c.features[i] !== undefined) c.features[i] = inp.value; });
+
+  save();
+  toast('All changes saved ✓');
+}
+
+function resetCourse() {
+  if (!confirm('Reset this course to its default data? This cannot be undone.')) return;
+  courses[activeKey] = JSON.parse(JSON.stringify(DEFAULT_COURSES[activeKey]));
+  save();
+  renderMain();
+  toast('Course reset to defaults');
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  EXPORT
+// ─────────────────────────────────────────────────────────────────
+function generateCoursesJS() {
+  let out = `'use strict';\n\n// ─────────────────────────────────────────────\n//  COURSE DATA  —  public/js/courses.js\n//  Generated by Easton's Training Admin\n//  ${new Date().toLocaleString('en-GB')}\n// ─────────────────────────────────────────────\n\nconst COURSES = {\n\n`;
+
+  Object.entries(courses).forEach(([key, c], ci, arr) => {
+    out += `  '${key}': {\n`;
+    out += `    name: ${JSON.stringify(c.name)}, tag: ${JSON.stringify(c.tag)}, price: ${JSON.stringify(c.price)}, priceNum: ${c.priceNum},\n`;
+    out += `    desc: ${JSON.stringify(c.desc)},\n`;
+    out += `    features: [\n`;
+    c.features.forEach((f, fi) => {
+      out += `      ${JSON.stringify(f)}${fi < c.features.length - 1 ? ',' : ''}\n`;
+    });
+    out += `    ],\n`;
+    out += `    dates: [\n`;
+    c.dates.forEach((d, di) => {
+      const yr = d.year || 2026;
+      out += `      { label: ${JSON.stringify(d.label)}, duration: ${JSON.stringify(d.duration)}, spots: ${JSON.stringify(d.spots)}, low: ${d.low}, year: ${yr} }${di < c.dates.length - 1 ? ',' : ''}\n`;
+    });
+    out += `    ]\n`;
+    out += `  }${ci < arr.length - 1 ? ',' : ''}\n\n`;
+  });
+
+  out += `};\n`;
+  return out;
+}
+
+function openExportModal() {
+  document.getElementById('exportCode').textContent = generateCoursesJS();
+  document.getElementById('exportModal').classList.add('open');
+}
+
+function closeExportModal() {
+  document.getElementById('exportModal').classList.remove('open');
+}
+
+function copyExport() {
+  navigator.clipboard.writeText(generateCoursesJS()).then(() => {
+    toast('Copied to clipboard ✓');
+    closeExportModal();
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────
+//  UTILITIES
+// ─────────────────────────────────────────────────────────────────
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+let toastTimer;
+function toast(msg, isError = false) {
+  const el = document.getElementById('toast');
+  el.innerHTML = `<i class="fa fa-${isError ? 'circle-exclamation' : 'circle-check'}"></i> ${msg}`;
+  el.className = `toast show${isError ? ' error' : ''}`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// Close export modal on backdrop click
+document.getElementById('exportModal').addEventListener('click', function(e) {
+  if (e.target === this) closeExportModal();
+});
+
+// ─────────────────────────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────────────────────────
+renderSidebar();
+</script>
+</body>
+</html>
