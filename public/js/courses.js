@@ -45,8 +45,8 @@ const COURSES = {
      // { label: 'May 4 – 10', duration: '7 days', spots: '12 places left', low: false },
       // { label: 'July 13 – 19',  duration: '7 days', spots: '12 places left', low: false },
      // { label: 'August 3 – 9',  duration: '7 days', spots: '12 places left', low: false },
-      { label: 'October 19 – 25',  duration: '7 days', spots: '12 places left', low: false },
-      { label: 'November 23 – 29',  duration: '7 days', spots: '12 places left', low: false },
+     // { label: 'October 19 – 25',  duration: '7 days', spots: '12 places left', low: false },
+      { label: 'November 9 – 15',  duration: '7 days', spots: '12 places left', low: false },
        { label: 'January 11 – 17',  duration: '7 days', spots: '12 places left', low: false, year: 2027},
       { label: 'February 8 – 14',  duration: '7 days', spots: '12 places left', low: false, year: 2027 },
       { label: 'March 22 – 28',  duration: '7 days', spots: '12 places left', low: false, year: 2027 },
@@ -95,7 +95,8 @@ const COURSES = {
     dates: [
    
       // { label: 'July 20 – 22', duration: '3 days', spots: '12 places left', low: false },
-       { label: 'October 15 – 17',  duration: '3 days', spots: '12 places left', low: false }
+        { label: 'Coming Soon', duration: '3 days', spots: '', low: true  },
+      // { label: 'October 15 – 17',  duration: '3 days', spots: '12 places left', low: false }
     ]
   },
 
@@ -139,9 +140,9 @@ const COURSES = {
     dates: [
   
       // { label: 'July 25', duration: '1 day', spots: '6 places left', low: false },
-       { label: 'October 18',  duration: '1 day', spots: '12 places left',  low: false },
-       //{ label: 'April 21',  duration: '1 day', spots: '12 places left',  low: false, year: 2027 },
-       { label: 'April 21',  duration: '1 day', spots: '12 places left',  low: false }
+       // { label: 'October 18',  duration: '1 day', spots: '12 places left',  low: false },
+       { label: 'April 21',  duration: '1 day', spots: '12 places left',  low: false, year: 2027 },
+       // { label: 'April 21',  duration: '1 day', spots: '12 places left',  low: false }
     ]
   },
 
@@ -169,8 +170,8 @@ const COURSES = {
     ],
     dates: [
      // { label: 'June 15 – 19', duration: '5 days', spots: '6 places left', low: false },
-      { label: 'Aug 31 – 4 Sept', duration: '5 days', spots: '12 places left', low: true  },
-      { label: 'September 21 – 25', duration: '5 days', spots: '12 places left', low: true  },
+      // { label: 'Aug 31 – 4 Sept', duration: '5 days', spots: '12 places left', low: true  },
+      // { label: 'September 21 – 25', duration: '5 days', spots: '12 places left', low: true  },
       { label: 'January 25 – 29',  duration: '5 days', spots: '12 places left', low: false, year: 2027 },
         { label: 'March 1 – 5', duration: '5 days', spots: '12 places left', low: true, year: 2027  },
        { label: 'May 10 – 14',  duration: '5 days', spots: '12 places left', low: false, year: 2027 }
@@ -268,7 +269,7 @@ const COURSES = {
     dates: [
       // { label: 'Mar 26 – 27', duration: '2 days', spots: '6 places left', low: false },
       // { label: 'June 3 – 4', duration: '2 days', spots: '12 places left', low: false },
-      { label: 'September 28 – 29',  duration: '2 days', spots: '12 places left', low: true  },
+      //{ label: 'September 28 – 29',  duration: '2 days', spots: '12 places left', low: true  },
       { label: 'November 21 – 22', duration: '2 days', spots: '12 places left', low: false },
       { label: 'March 6 – 7',  duration: '2 days', spots: '12 places left', low: true, year: 2027 },
       { label: 'May 29 – 30', duration: '2 days', spots: '12 places left', low: false, year: 2027 },
@@ -287,7 +288,7 @@ const COURSES = {
     dates: [
      
       // { label: 'July 24 – 26',  duration: '3 days', spots: '12 places left', low: true  },
-       { label: 'October 9 – 11',  duration: '3 days', spots: '12 places left', low: true  },
+      // { label: 'October 9 – 11',  duration: '3 days', spots: '12 places left', low: true  },
          { label: 'November 6 – 8', duration: '3 days', spots: '12 places left', low: false },
           { label: 'January 29 – 31',  duration: '3 days', spots: '12 places left', low: true, year: 2027 },
        { label: 'February 19 – 21',  duration: '3 days', spots: '12 places left', low: true, year: 2027 },
