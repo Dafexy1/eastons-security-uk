@@ -63,7 +63,7 @@ const COURSES = {
       'First Aid at Work / Emergency First Aid at Work'
     ],
     dates: [
-        { label: 'Coming Soon', duration: '9 days', spots: '', low: true  },
+        { label: 'Coming Soon', duration: '9 days', spots: '', low: true, year: 2027 },
       // { label: 'Jan 12 – 20', duration: '9 days', spots: '12 places left', low: false },
       // { label: 'Feb 10 – 18', duration: '9 days', spots: '12 places left', low: true  },
       // { label: 'Mar 2 – 10',  duration: '9 days', spots: '12 places left', low: false }
@@ -79,7 +79,7 @@ const COURSES = {
     ],
     dates: [
      // { label: 'April 20 – 22', duration: '3 days', spots: '10 places left', low: false },
-      { label: 'Coming Soon', duration: '3 days', spots: '', low: true  },
+      { label: 'Coming Soon', duration: '3 days', spots: '', low: true, year: 2027 },
      // { label: 'June 5 – 7', duration: '3 days', spots: '12 places left',  low: false },
       // { label: 'Mar 2 – 10',  duration: '3 days', spots: '2 places left',  low: true  }
     ]
@@ -95,7 +95,7 @@ const COURSES = {
     dates: [
    
       // { label: 'July 20 – 22', duration: '3 days', spots: '12 places left', low: false },
-        { label: 'Coming Soon', duration: '3 days', spots: '', low: true  },
+        { label: 'Coming Soon', duration: '3 days', spots: '', low: true, year: 2027 },
       // { label: 'October 15 – 17',  duration: '3 days', spots: '12 places left', low: false }
     ]
   },
@@ -108,7 +108,7 @@ const COURSES = {
       'Post-Incident Reporting', 'Corporate Risk Assessment', '24/7 Tutor Access'
     ],
     dates: [
-        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true, year: 2027 },
       // { label: 'Jan 12 – 20', duration: '2 days', spots: '8 places left', low: false },
       // { label: 'Feb 10 – 18', duration: '2 days', spots: '6 places left', low: false },
       // { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true  }
@@ -123,7 +123,7 @@ const COURSES = {
       'Personal Safety', 'Scenario-Based Training', '24/7 Tutor Support'
     ],
     dates: [
-        { label: 'Coming Soon', duration: '9 days', spots: '', low: true  },
+        { label: 'Coming Soon', duration: '9 days', spots: '', low: true, year: 2027 },
       // { label: 'Jan 12 – 20', duration: '2 days', spots: '6 places left', low: false },
       // { label: 'Feb 10 – 18', duration: '2 days', spots: '4 places left', low: true  },
       // { label: 'Mar 2 – 10',  duration: '2 days', spots: '8 places left', low: false }
@@ -154,7 +154,7 @@ const COURSES = {
       'Medical Emergencies', 'Practical Scenarios', 'Course Certificate'
     ],
     dates: [
-        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true, year: 2027 },
       // { label: 'Jan 12 – 20', duration: '3 days', spots: '8 places left', low: false },
       // { label: 'Feb 10 – 18', duration: '3 days', spots: '6 places left', low: false },
       // { label: 'Mar 2 – 10',  duration: '3 days', spots: '4 places left', low: false }
@@ -186,7 +186,7 @@ const COURSES = {
       'Shock & Burns', 'Practical Scenarios', 'Course Certificate'
     ],
     dates: [
-        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true, year: 2027 },
       // { label: 'Jan 12 – 20', duration: '1 day', spots: '12 places left', low: false },
       // { label: 'Feb 10 – 18', duration: '1 day', spots: '10 places left', low: false },
       // { label: 'Mar 2 – 10',  duration: '1 day', spots: '6 places left',  low: false }
@@ -201,7 +201,7 @@ const COURSES = {
       'Signposting Resources', 'Practical Scenarios', '24/7 Tutor Access'
     ],
     dates: [
-        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true, year: 2027 },
       // { label: 'Jan 12 – 20', duration: '2 days', spots: '8 places left', low: false },
       // { label: 'Feb 10 – 18', duration: '2 days', spots: '6 places left', low: false },
       // { label: 'Mar 2 – 10',  duration: '2 days', spots: '3 places left', low: true  }
@@ -239,7 +239,7 @@ const COURSES = {
       'Sexual Violence'
     ],
     dates: [
-      { label: 'Coming Soon', duration: '10 days', spots: '', low: true  },
+      { label: 'Coming Soon', duration: '10 days', spots: '', low: true, year: 2027 },
       // { label: 'Mar 2 – 10',  duration: '3 days', spots: '5 places left', low: false }
     ]
   },
@@ -252,7 +252,7 @@ const COURSES = {
       'Scenario Practice', 'Certificate Renewal', 'Half Day Course'
     ],
     dates: [
-      { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+      { label: 'Coming Soon', duration: '23 days', spots: '', low: true, year: 2027 },
       // { label: 'Jan 12 – 20', duration: 'Half day', spots: '12 places left', low: false },
       // { label: 'Feb 10 – 18', duration: 'Half day', spots: '10 places left', low: false },
       // { label: 'Mar 2 – 10',  duration: 'Half day', spots: '8 places left',  low: false }
@@ -305,7 +305,7 @@ const COURSES = {
       'Fire Risk Assessment', 'Fire Wardrobe Procedures', 'Fire Drill Procedures', 'Fire Safety Certificate'
     ],
     dates: [
-        { label: 'Coming Soon', duration: '23 days', spots: '', low: true  },
+        { label: 'Coming Soon', duration: '23 days', spots: '', low: true, year: 2027 },
       // { label: 'April 30', duration: '1 days', spots: '6 places left', low: false },
       // { label: 'May 29 – 31', duration: '3 days', spots: '7 places left', low: false },
       // { label: 'Jun 8 – 10',  duration: '3 days', spots: '7 places left', low: true  }
